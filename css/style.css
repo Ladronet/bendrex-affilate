@@ -293,6 +293,9 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
   color: var(--muted);
 }
 .pill.live { color: var(--green); border-color: rgba(52, 211, 153, 0.4); }
+.pill.confirmed { color: var(--green); border-color: rgba(52, 211, 153, 0.4); }
+.pill.provisional { color: var(--amber); border-color: rgba(251, 191, 36, 0.4); }
+.pill.tbc { color: var(--muted); border-style: dashed; }
 .pill.live::before {
   content: "";
   display: inline-block;
@@ -313,6 +316,13 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
 }
 
 /* ---------- Timeline (eventi) ---------- */
+.year-label {
+  margin: 28px 0 12px;
+  color: var(--magenta);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .timeline { list-style: none; margin: 0; padding: 0; }
 .timeline li {
   position: relative;
