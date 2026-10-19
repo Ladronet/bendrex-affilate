@@ -1,5 +1,5 @@
 /* ============================================================
-   BENDREX.AFFILATE — interazioni minime
+   BENDREX — interazioni minime
    Nessuna dipendenza esterna.
    ============================================================ */
 (function () {
@@ -14,6 +14,22 @@
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
   }
+
+  var tierToggles = document.querySelectorAll(".tier-toggle");
+  Array.prototype.forEach.call(tierToggles, function (btn) {
+    btn.addEventListener("click", function () {
+      var expanded = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", expanded ? "false" : "true");
+      var panel = document.getElementById(btn.getAttribute("aria-controls"));
+      if (panel) {
+        panel.hidden = expanded;
+      }
+      var icon = btn.querySelector(".tier-icon");
+      if (icon) {
+        icon.textContent = expanded ? "+" : "−";
+      }
+    });
+  });
 
   var year = document.querySelector("[data-year]");
   if (year) {

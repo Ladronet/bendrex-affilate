@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Build PC Economy, Media e Ultra — configurazioni consigliate." />
-  <title>Build PC — BENDREX.AFFILATE</title>
+  <meta name="description" content="Build PC Economy, Media e Ultra — specifiche consigliate (esempi)." />
+  <title>Build PC — BENDREX</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
 
   <header class="site-header">
     <nav class="nav container" aria-label="Principale">
-      <a class="brand" href="index.html">BENDREX<span class="dot">.AFFILATE</span></a>
+      <a class="brand" href="index.html">BENDREX</a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Apri menu">☰</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -27,66 +27,75 @@
     <section class="hero container">
       <span class="eyebrow">Hardware</span>
       <h1>Build PC</h1>
-      <p class="lead">Tre fasce di prezzo, un obiettivo: il miglior rapporto qualità-prezzo per giocare.</p>
+      <p class="lead">Seleziona una fascia per vedere le specifiche consigliate.</p>
     </section>
 
     <section class="section container" aria-labelledby="tiers-heading">
       <h2 class="section-title" id="tiers-heading">Configurazioni consigliate</h2>
-      <p class="section-sub">Prezzi indicativi (esempio) — da verificare al momento dell'acquisto.</p>
-      <div class="grid">
-        <article class="card tier-economy">
-          <p class="tag">Entry · 1080p</p>
-          <h3>Economy</h3>
-          <p>Gaming fluido a 1080p su titoli esports e AAA a dettagli medi.</p>
-          <div class="price">~ 600 €</div>
-        </article>
-        <article class="card tier-media">
-          <p class="tag">Mainstream · 1440p</p>
-          <h3>Media</h3>
-          <p>Equilibrio ideale per 1440p a dettagli alti e produttività.</p>
-          <div class="price">~ 1.200 €</div>
-        </article>
-        <article class="card tier-ultra">
-          <p class="tag">Enthusiast · 4K</p>
-          <h3>Ultra</h3>
-          <p>Massime prestazioni per 4K, ray tracing e streaming.</p>
-          <div class="price">~ 2.500 €</div>
-        </article>
-      </div>
-    </section>
+      <p class="section-sub">Tre fasce, un obiettivo: il miglior rapporto qualità-prezzo per giocare.</p>
+      <div class="notice">Specifiche di esempio (placeholder), non aggiornate. Nessun prezzo o modello presentato come attuale.</div>
 
-    <section class="section container" aria-labelledby="detail-heading">
-      <h2 class="section-title" id="detail-heading">Dettaglio componenti</h2>
-      <p class="section-sub">Dati di esempio — sostituire con liste reali e link affiliati.</p>
-      <div class="table-wrap">
-        <table>
-          <caption class="skip-link">Tabella comparativa delle tre build</caption>
-          <thead>
-            <tr>
-              <th scope="col">Componente</th>
-              <th scope="col">Economy</th>
-              <th scope="col">Media</th>
-              <th scope="col">Ultra</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><th scope="row">CPU</th><td>Ryzen 5 (6c/12t)</td><td>Ryzen 7 (8c/16t)</td><td>Ryzen 9 / Core i9</td></tr>
-            <tr><th scope="row">GPU</th><td>RTX 4060</td><td>RTX 4070 Super</td><td>RTX 4080 Super</td></tr>
-            <tr><th scope="row">RAM</th><td>16 GB DDR5</td><td>32 GB DDR5</td><td>32 GB DDR5</td></tr>
-            <tr><th scope="row">Storage</th><td>1 TB NVMe</td><td>1 TB NVMe</td><td>2 TB NVMe</td></tr>
-            <tr><th scope="row">Target</th><td class="spec-muted">1080p / 60+ fps</td><td class="spec-muted">1440p / 120+ fps</td><td class="spec-muted">4K / 60+ fps</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="notice">
-        Configurazioni di esempio. Prezzi e disponibilità cambiano: vanno aggiornati periodicamente.
+      <div class="tier-list">
+        <div class="tier tier-economy">
+          <button class="tier-toggle" type="button" id="tier-economy-btn" aria-expanded="false" aria-controls="spec-economy">
+            <span class="tier-name">Economy</span>
+            <span class="tier-tag">Entry · 1080p</span>
+            <span class="tier-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="tier-panel" id="spec-economy" role="region" aria-labelledby="tier-economy-btn" hidden>
+            <p class="tier-desc">Gaming fluido a 1080p su titoli esports e AAA a dettagli medi.</p>
+            <ul class="spec-list">
+              <li><span class="spec-key">CPU</span><span class="spec-val">Ryzen 5 (6 core / 12 thread)</span></li>
+              <li><span class="spec-key">GPU</span><span class="spec-val">RTX 4060</span></li>
+              <li><span class="spec-key">RAM</span><span class="spec-val">16 GB DDR5</span></li>
+              <li><span class="spec-key">Storage</span><span class="spec-val">1 TB NVMe</span></li>
+              <li><span class="spec-key">Target</span><span class="spec-val">1080p / 60+ fps</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tier tier-media">
+          <button class="tier-toggle" type="button" id="tier-media-btn" aria-expanded="false" aria-controls="spec-media">
+            <span class="tier-name">Media</span>
+            <span class="tier-tag">Mainstream · 1440p</span>
+            <span class="tier-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="tier-panel" id="spec-media" role="region" aria-labelledby="tier-media-btn" hidden>
+            <p class="tier-desc">Equilibrio ideale per 1440p a dettagli alti e produttività.</p>
+            <ul class="spec-list">
+              <li><span class="spec-key">CPU</span><span class="spec-val">Ryzen 7 (8 core / 16 thread)</span></li>
+              <li><span class="spec-key">GPU</span><span class="spec-val">RTX 4070 Super</span></li>
+              <li><span class="spec-key">RAM</span><span class="spec-val">32 GB DDR5</span></li>
+              <li><span class="spec-key">Storage</span><span class="spec-val">1 TB NVMe</span></li>
+              <li><span class="spec-key">Target</span><span class="spec-val">1440p / 120+ fps</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="tier tier-ultra">
+          <button class="tier-toggle" type="button" id="tier-ultra-btn" aria-expanded="false" aria-controls="spec-ultra">
+            <span class="tier-name">Ultra</span>
+            <span class="tier-tag">Enthusiast · 4K</span>
+            <span class="tier-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="tier-panel" id="spec-ultra" role="region" aria-labelledby="tier-ultra-btn" hidden>
+            <p class="tier-desc">Massime prestazioni per 4K, ray tracing e streaming.</p>
+            <ul class="spec-list">
+              <li><span class="spec-key">CPU</span><span class="spec-val">Ryzen 9 / Core i9</span></li>
+              <li><span class="spec-key">GPU</span><span class="spec-val">RTX 4080 Super</span></li>
+              <li><span class="spec-key">RAM</span><span class="spec-val">32 GB DDR5</span></li>
+              <li><span class="spec-key">Storage</span><span class="spec-val">2 TB NVMe</span></li>
+              <li><span class="spec-key">Target</span><span class="spec-val">4K / 60+ fps</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <span>© <span data-year></span> BENDREX.AFFILATE</span>
+      <span>© <span data-year></span> BENDREX</span>
       <span>Progetto privato — scaffold statico</span>
     </div>
   </footer>
