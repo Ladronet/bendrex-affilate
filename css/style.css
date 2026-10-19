@@ -355,6 +355,13 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
   margin: 18px 0;
 }
 
+/* ---------- Article (blog post) ---------- */
+.article { max-width: 760px; }
+.article h2 { font-size: 20px; margin: 28px 0 12px; letter-spacing: 0.02em; }
+.article p { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
+.article strong { color: var(--text); }
+.article .spec-list { margin: 16px 0 20px; }
+
 /* ---------- Footer ---------- */
 .site-footer {
   border-top: 1px solid var(--line);
