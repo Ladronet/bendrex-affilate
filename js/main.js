@@ -15,18 +15,21 @@
     });
   }
 
-  var specToggles = document.querySelectorAll(".spec-toggle");
-  Array.prototype.forEach.call(specToggles, function (btn) {
-    btn.addEventListener("click", function () {
-      var expanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", expanded ? "false" : "true");
-      var panel = document.getElementById(btn.getAttribute("aria-controls"));
+  var buildCards = document.querySelectorAll(".card[role='button']");
+  Array.prototype.forEach.call(buildCards, function (card) {
+    var toggleCard = function () {
+      var expanded = card.getAttribute("aria-expanded") === "true";
+      card.setAttribute("aria-expanded", expanded ? "false" : "true");
+      var panel = document.getElementById(card.getAttribute("aria-controls"));
       if (panel) {
         panel.hidden = expanded;
       }
-      var icon = btn.querySelector(".spec-chevron");
-      if (icon) {
-        icon.textContent = expanded ? "+" : "−";
+    };
+    card.addEventListener("click", toggleCard);
+    card.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " " || e.key === "Spacebar") {
+        e.preventDefault();
+        toggleCard();
       }
     });
   });

@@ -245,22 +245,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .tier-ultra    { border-top: 3px solid var(--magenta); }
 
 /* ---------- Spec reveal (Build PC) ---------- */
-.spec-toggle {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--cyan);
-  font-family: inherit;
-  font-size: 13px;
-  cursor: pointer;
-}
-.spec-toggle:hover { background: rgba(255, 255, 255, 0.06); }
-.spec-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
-.spec-chevron { font-size: 15px; }
+.card[role="button"] { cursor: pointer; }
+.card[role="button"]:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 .spec-panel { margin-top: 14px; }
 .spec-list { list-style: none; margin: 0; padding: 0; }
 .spec-list li {
