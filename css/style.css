@@ -93,9 +93,9 @@ img, svg { max-width: 100%; height: auto; display: block; }
   color: var(--text);
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 0;
 }
-.brand .dot { color: var(--magenta); text-shadow: 0 0 10px var(--magenta); }
+.brand .dot { color: var(--purple); text-shadow: 0 0 10px var(--purple); }
 
 .nav-links {
   display: flex;
