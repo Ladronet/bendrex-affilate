@@ -15,8 +15,8 @@
     });
   }
 
-  var tierToggles = document.querySelectorAll(".tier-toggle");
-  Array.prototype.forEach.call(tierToggles, function (btn) {
+  var specToggles = document.querySelectorAll(".spec-toggle");
+  Array.prototype.forEach.call(specToggles, function (btn) {
     btn.addEventListener("click", function () {
       var expanded = btn.getAttribute("aria-expanded") === "true";
       btn.setAttribute("aria-expanded", expanded ? "false" : "true");
@@ -24,7 +24,7 @@
       if (panel) {
         panel.hidden = expanded;
       }
-      var icon = btn.querySelector(".tier-icon");
+      var icon = btn.querySelector(".spec-chevron");
       if (icon) {
         icon.textContent = expanded ? "+" : "−";
       }

@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Build PC Economy, Media e Ultra — specifiche consigliate (esempi)." />
-  <title>Build PC — Bendrex</title>
+  <title>Build PC — BENDREX.IT</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -12,7 +12,7 @@
 
   <header class="site-header">
     <nav class="nav container" aria-label="Principale">
-      <a class="brand" href="index.html">Bendrex<span class="dot">.it</span></a>
+      <a class="brand" href="index.html">BENDREX<span class="dot">.IT</span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Apri menu">☰</button>
       <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -27,23 +27,21 @@
     <section class="hero container">
       <span class="eyebrow">Hardware</span>
       <h1>Build PC</h1>
-      <p class="lead">Seleziona una fascia per vedere le specifiche consigliate.</p>
+      <p class="lead">Tre fasce, un obiettivo: il miglior rapporto qualità-prezzo per giocare.</p>
     </section>
 
     <section class="section container" aria-labelledby="tiers-heading">
       <h2 class="section-title" id="tiers-heading">Configurazioni consigliate</h2>
-      <p class="section-sub">Tre fasce, un obiettivo: il miglior rapporto qualità-prezzo per giocare.</p>
+      <p class="section-sub">Seleziona una fascia per vedere le specifiche consigliate.</p>
       <div class="notice">Specifiche di esempio (placeholder), non aggiornate. Nessun prezzo o modello presentato come attuale.</div>
 
-      <div class="tier-list">
-        <div class="tier tier-economy">
-          <button class="tier-toggle" type="button" id="tier-economy-btn" aria-expanded="false" aria-controls="spec-economy">
-            <span class="tier-name">Economy</span>
-            <span class="tier-tag">Entry · 1080p</span>
-            <span class="tier-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="tier-panel" id="spec-economy" role="region" aria-labelledby="tier-economy-btn" hidden>
-            <p class="tier-desc">Gaming fluido a 1080p su titoli esports e AAA a dettagli medi.</p>
+      <div class="grid">
+        <article class="card tier-economy">
+          <p class="tag">Entry · 1080p</p>
+          <h3>Economy</h3>
+          <p>Gaming fluido a 1080p su titoli esports e AAA a dettagli medi.</p>
+          <button class="spec-toggle" type="button" aria-expanded="false" aria-controls="spec-economy">Mostra specifiche <span class="spec-chevron" aria-hidden="true">+</span></button>
+          <div class="spec-panel" id="spec-economy" hidden>
             <ul class="spec-list">
               <li><span class="spec-key">CPU</span><span class="spec-val">Ryzen 5 (6 core / 12 thread)</span></li>
               <li><span class="spec-key">GPU</span><span class="spec-val">RTX 4060</span></li>
@@ -52,16 +50,14 @@
               <li><span class="spec-key">Target</span><span class="spec-val">1080p / 60+ fps</span></li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="tier tier-media">
-          <button class="tier-toggle" type="button" id="tier-media-btn" aria-expanded="false" aria-controls="spec-media">
-            <span class="tier-name">Media</span>
-            <span class="tier-tag">Mainstream · 1440p</span>
-            <span class="tier-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="tier-panel" id="spec-media" role="region" aria-labelledby="tier-media-btn" hidden>
-            <p class="tier-desc">Equilibrio ideale per 1440p a dettagli alti e produttività.</p>
+        <article class="card tier-media">
+          <p class="tag">Mainstream · 1440p</p>
+          <h3>Media</h3>
+          <p>Equilibrio ideale per 1440p a dettagli alti e produttività.</p>
+          <button class="spec-toggle" type="button" aria-expanded="false" aria-controls="spec-media">Mostra specifiche <span class="spec-chevron" aria-hidden="true">+</span></button>
+          <div class="spec-panel" id="spec-media" hidden>
             <ul class="spec-list">
               <li><span class="spec-key">CPU</span><span class="spec-val">Ryzen 7 (8 core / 16 thread)</span></li>
               <li><span class="spec-key">GPU</span><span class="spec-val">RTX 4070 Super</span></li>
@@ -70,16 +66,14 @@
               <li><span class="spec-key">Target</span><span class="spec-val">1440p / 120+ fps</span></li>
             </ul>
           </div>
-        </div>
+        </article>
 
-        <div class="tier tier-ultra">
-          <button class="tier-toggle" type="button" id="tier-ultra-btn" aria-expanded="false" aria-controls="spec-ultra">
-            <span class="tier-name">Ultra</span>
-            <span class="tier-tag">Enthusiast · 4K</span>
-            <span class="tier-icon" aria-hidden="true">+</span>
-          </button>
-          <div class="tier-panel" id="spec-ultra" role="region" aria-labelledby="tier-ultra-btn" hidden>
-            <p class="tier-desc">Massime prestazioni per 4K, ray tracing e streaming.</p>
+        <article class="card tier-ultra">
+          <p class="tag">Enthusiast · 4K</p>
+          <h3>Ultra</h3>
+          <p>Massime prestazioni per 4K, ray tracing e streaming.</p>
+          <button class="spec-toggle" type="button" aria-expanded="false" aria-controls="spec-ultra">Mostra specifiche <span class="spec-chevron" aria-hidden="true">+</span></button>
+          <div class="spec-panel" id="spec-ultra" hidden>
             <ul class="spec-list">
               <li><span class="spec-key">CPU</span><span class="spec-val">Ryzen 9 / Core i9</span></li>
               <li><span class="spec-key">GPU</span><span class="spec-val">RTX 4080 Super</span></li>
@@ -88,14 +82,14 @@
               <li><span class="spec-key">Target</span><span class="spec-val">4K / 60+ fps</span></li>
             </ul>
           </div>
-        </div>
+        </article>
       </div>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <span>© <span data-year></span> Bendrex</span>
+      <span>© <span data-year></span> BENDREX.IT</span>
       <span>Progetto privato — scaffold statico</span>
     </div>
   </footer>

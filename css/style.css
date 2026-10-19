@@ -240,45 +240,28 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .card p { color: var(--muted); margin: 0 0 16px; font-size: 14px; }
 .card .price { font-size: 20px; font-weight: 700; color: var(--cyan); }
 
-.tier-economy  { border-left: 3px solid var(--green); }
-.tier-media    { border-left: 3px solid var(--cyan); }
-.tier-ultra    { border-left: 3px solid var(--magenta); }
+.tier-economy  { border-top: 3px solid var(--green); }
+.tier-media    { border-top: 3px solid var(--cyan); }
+.tier-ultra    { border-top: 3px solid var(--magenta); }
 
-/* ---------- Tier accordion (Build PC) ---------- */
-.tier-list { display: flex; flex-direction: column; gap: 12px; }
-.tier {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: var(--panel);
-  overflow: hidden;
-}
-.tier-toggle {
-  width: 100%;
-  display: flex;
+/* ---------- Spec reveal (Build PC) ---------- */
+.spec-toggle {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  padding: 16px 18px;
-  background: none;
-  border: 0;
-  color: var(--text);
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--cyan);
   font-family: inherit;
-  font-size: 15px;
-  text-align: left;
+  font-size: 13px;
   cursor: pointer;
 }
-.tier-toggle:hover { background: rgba(255, 255, 255, 0.03); }
-.tier-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: -2px; }
-.tier-name { font-size: 18px; font-weight: 700; }
-.tier-tag {
-  margin-left: auto;
-  color: var(--muted);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-.tier-icon { font-size: 20px; color: var(--cyan); flex: none; }
-.tier-panel { padding: 0 18px 18px; }
-.tier-desc { color: var(--muted); margin: 0 0 12px; }
+.spec-toggle:hover { background: rgba(255, 255, 255, 0.06); }
+.spec-toggle:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+.spec-chevron { font-size: 15px; }
+.spec-panel { margin-top: 14px; }
 .spec-list { list-style: none; margin: 0; padding: 0; }
 .spec-list li {
   display: flex;
