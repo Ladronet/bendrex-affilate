@@ -361,6 +361,10 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
 .article p { color: var(--muted); margin: 0 0 16px; font-size: 15px; }
 .article strong { color: var(--text); }
 .article .spec-list { margin: 16px 0 20px; }
+.article ul, .article ol { margin: 0 0 16px; padding-left: 22px; font-size: 15px; }
+.article ul li, .article ol li { color: var(--muted); margin: 6px 0; }
+.article ul li::marker { color: var(--cyan); }
+.article ol li::marker { color: var(--magenta); }
 
 /* ---------- Footer ---------- */
 .site-footer {
