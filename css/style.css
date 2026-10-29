@@ -510,3 +510,25 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
   th, td { padding: 12px 10px; }
   table a { white-space: nowrap; }
 }
+
+/* ---------- Homepage extra ---------- */
+.hero-note {
+  margin-top: 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.hero-note .pill { margin-right: 8px; }
+
+.card-media {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+
+.section-cta {
+  margin-top: 24px;
+  text-align: center;
+}
+.section-cta a { font-weight: 600; }
+
+.section-center { text-align: center; }
