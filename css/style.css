@@ -219,6 +219,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
   margin: 0 0 8px;
 }
 .section-sub { color: var(--muted); margin: 0 0 28px; }
+.legend { color: var(--muted); font-size: 13px; margin: -16px 0 28px; line-height: 2.4; }
+.legend .pill { margin-right: 4px; }
 
 .grid {
   display: grid;
@@ -387,7 +389,9 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
 }
 .timeline .when { color: var(--magenta); font-size: 13px; }
 .timeline .what { margin: 2px 0; }
+.timeline .why { color: var(--muted); font-size: 13px; margin: 2px 0; font-style: italic; }
 .timeline .where { color: var(--muted); font-size: 13px; }
+.timeline .note { color: var(--muted); font-size: 12px; margin: 4px 0 0; }
 
 /* ---------- Notice ---------- */
 .notice {
