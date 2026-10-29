@@ -129,7 +129,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
 
 /* ---------- Hero ---------- */
 .hero {
-  padding: 72px 0 56px;
+  padding-top: 72px;
+  padding-bottom: 56px;
   text-align: center;
 }
 .hero .eyebrow {
@@ -144,8 +145,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
   margin-bottom: 20px;
 }
 .hero h1 {
-  font-size: clamp(30px, 6vw, 56px);
-  line-height: 1.08;
+  font-size: clamp(24px, 7vw, 56px);
+  line-height: 1.1;
   margin: 0 0 18px;
   letter-spacing: 0.01em;
 }
@@ -211,7 +212,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
 }
 
 /* ---------- Cards / grid ---------- */
-.section { padding: 40px 0 64px; }
+.section { padding-top: 40px; padding-bottom: 64px; }
 .section-title {
   font-size: 24px;
   letter-spacing: 0.02em;
@@ -442,7 +443,7 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
   }
   .nav-links.open { display: flex; }
   .nav-links a { padding: 12px; }
-  .hero { padding: 48px 0 40px; }
+  .hero { padding-top: 48px; padding-bottom: 40px; }
 }
 
 /* ---------- Reveal on scroll (progressive enhancement) ---------- */
@@ -471,4 +472,41 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ---------- Mobile touch & breathing room ---------- */
+@media (max-width: 720px) {
+  .container {
+    padding-left: max(22px, env(safe-area-inset-left));
+    padding-right: max(22px, env(safe-area-inset-right));
+  }
+  .site-header { padding-top: env(safe-area-inset-top); }
+
+  .nav { height: 60px; }
+  .nav-toggle { width: 44px; height: 44px; }
+  .nav-links { padding: 10px 16px 20px; }
+  .nav-links a {
+    padding: 14px 12px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+  }
+
+  .hero { padding-top: 56px; padding-bottom: 44px; }
+  .hero .lead { font-size: 15px; margin-bottom: 24px; }
+
+  .btn-row { flex-direction: column; align-items: stretch; gap: 12px; }
+  .btn { justify-content: center; min-height: 48px; padding: 12px 20px; }
+
+  .section { padding-top: 32px; padding-bottom: 48px; }
+  .section-sub { margin-bottom: 22px; }
+
+  .card { padding: 22px; }
+  .card h3 { font-size: 17px; }
+
+  .timeline li { margin-left: 4px; padding-left: 24px; }
+
+  th, td { padding: 12px 10px; }
+  table a { white-space: nowrap; }
 }
