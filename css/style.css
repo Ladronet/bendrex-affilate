@@ -536,3 +536,9 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
 .section-cta a { font-weight: 600; }
 
 .section-center { text-align: center; }
+
+/* ---------- Giochi consigliati ---------- */
+.pill.indie { color: var(--green);   border-color: rgba(52, 211, 153, 0.4); }
+.pill.aa    { color: var(--cyan);    border-color: rgba(34, 211, 238, 0.4); }
+.pill.aaa   { color: var(--magenta); border-color: rgba(232, 121, 249, 0.4); }
+.game-meta  { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
