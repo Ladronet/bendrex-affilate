@@ -195,6 +195,22 @@ img, svg { max-width: 100%; height: auto; display: block; }
   font-size: 14px;
 }
 .back-link a { font-weight: 600; }
+.float-illustration {
+  display: block;
+  max-width: 320px;
+  width: 100%;
+  height: auto;
+  margin: 20px auto 0;
+  image-rendering: pixelated;
+  animation: float 4s ease-in-out infinite;
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .float-illustration { animation: none; }
+}
 .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 .btn {
