@@ -162,6 +162,15 @@ img, svg { max-width: 100%; height: auto; display: block; }
   height: auto;
   margin: 0 auto 28px;
 }
+.hero .hero-cup {
+  max-width: 240px;
+  margin: 0 auto 24px;
+}
+.hero .hero-cup img {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
 .btn-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 .btn {
