@@ -53,7 +53,13 @@
     <section class="hero container">
       <span class="eyebrow">Giochi</span>
       <h1>Cup of Game</h1>
-      <div class="hero-cup" aria-hidden="true"><!-- Tazza gaming pixel art animata (asset in arrivo da Studio Immagini) --></div>
+      <div class="hero-cup">
+        <picture>
+          <source srcset="img/tazza-gaming-animata.png" type="image/apng">
+          <img class="cup-animated" src="img/tazza-gaming-animata.gif" alt="Tazza da gaming in pixel art animata" width="188" height="293">
+        </picture>
+        <img class="cup-static" src="img/tazza-gaming-static.png" alt="Tazza da gaming in pixel art" width="188" height="293">
+      </div>
       <p class="lead">Fai una pausa. Scopri il tuo prossimo gioco.</p>
     </section>
 

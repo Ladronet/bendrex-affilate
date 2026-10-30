@@ -163,13 +163,19 @@ img, svg { max-width: 100%; height: auto; display: block; }
   margin: 0 auto 28px;
 }
 .hero .hero-cup {
-  max-width: 240px;
+  width: 188px;
+  max-width: 100%;
   margin: 0 auto 24px;
 }
 .hero .hero-cup img {
   width: 100%;
   height: auto;
   image-rendering: pixelated;
+}
+.hero .hero-cup .cup-static { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-cup .cup-animated { display: none; }
+  .hero .hero-cup .cup-static { display: block; }
 }
 .hero .hero-keyart {
   max-width: 300px;
