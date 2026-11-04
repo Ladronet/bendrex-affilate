@@ -177,6 +177,24 @@ img, svg { max-width: 100%; height: auto; display: block; }
   .hero .hero-cup .cup-animated { display: none; }
   .hero .hero-cup .cup-static { display: block; }
 }
+.hero .hero-blogart {
+  width: 190px;
+  max-width: 100%;
+  margin: 4px auto 22px;
+}
+.hero .hero-blogart img {
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+}
+.hero .hero-blogart .blogart-static { display: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hero .hero-blogart .blogart-animated { display: none; }
+  .hero .hero-blogart .blogart-static { display: block; }
+}
+@media (min-width: 721px) {
+  .hero .hero-blogart { width: 240px; }
+}
 .hero .hero-keyart {
   max-width: 300px;
   width: 100%;
