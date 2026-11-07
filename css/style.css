@@ -609,3 +609,26 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
 .pill.aa    { color: var(--cyan);    border-color: rgba(34, 211, 238, 0.4); }
 .pill.aaa   { color: var(--magenta); border-color: rgba(232, 121, 249, 0.4); }
 .game-meta  { color: var(--muted); font-size: 13px; margin: 0 0 12px; }
+/* ---------- Correlati e FAQ (SEO interno) ---------- */
+.related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 760px;
+}
+.related-list li {
+  border-left: 2px solid var(--cyan);
+  padding: 2px 0 2px 14px;
+  margin: 0 0 12px;
+}
+.related-list a { font-size: 15px; }
+
+.faq-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 760px;
+}
+.faq-list li { margin: 0 0 20px; }
+.faq-list strong { display: block; margin-bottom: 4px; }
+.faq-list p { color: var(--muted); margin: 0; font-size: 15px; }
