@@ -9,9 +9,35 @@
   var navLinks = document.querySelector(".nav-links");
 
   if (navToggle && navLinks) {
-    navToggle.addEventListener("click", function () {
-      var open = navLinks.classList.toggle("open");
+    var navLabelClosed = navToggle.getAttribute("aria-label") || "Apri menu";
+    var navLabelOpen = "Chiudi menu";
+
+    var setNav = function (open, restoreFocus) {
+      navLinks.classList.toggle("open", open);
       navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+      navToggle.setAttribute("aria-label", open ? navLabelOpen : navLabelClosed);
+      if (!open && restoreFocus) {
+        navToggle.focus();
+      }
+    };
+
+    navToggle.addEventListener("click", function () {
+      setNav(navToggle.getAttribute("aria-expanded") !== "true", false);
+    });
+
+    // Esc chiude il menu e riporta il focus sul bottone (pattern disclosure).
+    document.addEventListener("keydown", function (event) {
+      if (event.key !== "Escape" && event.key !== "Esc") return;
+      if (navToggle.getAttribute("aria-expanded") !== "true") return;
+      event.preventDefault();
+      setNav(false, true);
+    });
+
+    // Una voce già sulla pagina (es. Home) non deve lasciare il menu aperto.
+    Array.prototype.forEach.call(navLinks.querySelectorAll("a"), function (link) {
+      link.addEventListener("click", function () {
+        setNav(false, false);
+      });
     });
   }
 

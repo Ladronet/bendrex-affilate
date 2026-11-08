@@ -1,19 +1,19 @@
 {
   "redirects": [
     {
-      "source": "/index.html",
-      "destination": "/",
-      "statusCode": 301
-    },
-    {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "www.bendrex.it"
         }
       ],
-      "destination": "https://bendrex.it/:path*",
+      "destination": "https://bendrex.it/$1",
+      "statusCode": 301
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
       "statusCode": 301
     }
   ]
