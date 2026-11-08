@@ -632,3 +632,51 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
 .faq-list li { margin: 0 0 20px; }
 .faq-list strong { display: block; margin-bottom: 4px; }
 .faq-list p { color: var(--muted); margin: 0; font-size: 15px; }
+
+/* ---------- Indice di pagina (ancore) ---------- */
+/* Il target di un'ancora non deve finire sotto l'header sticky. */
+section[id] { scroll-margin-top: 84px; }
+
+.section-jump { padding-top: 4px; padding-bottom: 4px; }
+
+.jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.jump-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 8px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+.jump-links a:hover {
+  color: var(--text);
+  border-color: rgba(34, 211, 238, 0.45);
+}
+
+.jump-links a:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  color: var(--text);
+}
+
+@media (max-width: 720px) {
+  .jump-links { gap: 6px; }
+  .jump-links a { min-height: 44px; padding: 10px 14px; }
+}
