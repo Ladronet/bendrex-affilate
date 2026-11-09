@@ -378,6 +378,8 @@ img, svg { max-width: 100%; height: auto; display: block; }
   letter-spacing: 0.04em;
 }
 .spec-val { color: var(--text); }
+/* Pagine legali: le liste con testo e link inline devono andare a capo a 375px. */
+.legal-page .spec-list li { flex-wrap: wrap; }
 
 /* ---------- Table ---------- */
 .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); }
