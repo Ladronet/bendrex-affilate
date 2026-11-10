@@ -1,6 +1,11 @@
 {
   "redirects": [
     {
+      "source": "/dreadmoor-early-access-steam-prezzo-requisiti.html",
+      "destination": "/dreadmoor-gioco-pesca-horror.html",
+      "statusCode": 301
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
