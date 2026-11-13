@@ -26,6 +26,52 @@
   <meta name="twitter:title" content="Build PC gaming: tre build pronte per 1080p, 1440p e 4K" />
   <meta name="twitter:description" content="Tre build PC gaming pronte per 1080p, 1440p e 4K: componenti scelti, fasce di prezzo indicative e link per l'acquisto." />
   <meta name="twitter:image" content="https://bendrex.it/img/og-bendrex.jpg" />
+  <style>
+    /* Build PC: sotto i 640px le tabelle diventano blocchi etichettati, senza scroll orizzontale. */
+    @media (max-width: 639.98px) {
+      #buy-heading .table-wrap,
+      #compare-heading .table-wrap { overflow-x: visible; }
+
+      #buy-heading table,
+      #compare-heading table { display: block; }
+
+      #buy-heading thead,
+      #compare-heading thead {
+        position: absolute; width: 1px; height: 1px; margin: -1px;
+        overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+      }
+
+      #buy-heading tbody,
+      #compare-heading tbody { display: block; }
+
+      #buy-heading tr,
+      #compare-heading tr { display: block; border-bottom: 1px solid var(--line); padding: 6px 0; }
+      #buy-heading tr:last-child,
+      #compare-heading tr:last-child { border-bottom: 0; }
+
+      #buy-heading td,
+      #compare-heading td { display: block; width: 100%; border-bottom: 0; padding: 5px 14px; }
+
+      #compare-heading th[scope="row"] {
+        display: block; padding: 8px 14px 2px; border: 0; background: none;
+        color: var(--text); font-size: 14px; font-weight: 700;
+        letter-spacing: 0; text-transform: none;
+      }
+
+      #buy-heading td::before,
+      #compare-heading td::before {
+        display: block; margin-bottom: 2px; color: var(--muted);
+        font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase;
+      }
+      #buy-heading td:nth-child(1)::before { content: "Componente"; }
+      #buy-heading td:nth-child(2)::before { content: "Modello"; }
+      #buy-heading td:nth-child(3)::before { content: "Prezzo"; }
+      #buy-heading td:nth-child(4)::before { content: "Acquisto"; }
+      #compare-heading td:nth-child(2)::before { content: "Economy"; }
+      #compare-heading td:nth-child(3)::before { content: "Media"; }
+      #compare-heading td:nth-child(4)::before { content: "Ultra"; }
+    }
+  </style>
   <script>document.documentElement.classList.add("js");</script>
   <script type="application/ld+json">
 {
