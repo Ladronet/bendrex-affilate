@@ -499,6 +499,26 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
   flex-wrap: wrap;
 }
 
+.footer-social { display: inline-flex; align-items: center; }
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 4px 6px;
+  margin: -4px -6px;
+  border-radius: var(--radius);
+  color: var(--text);
+  text-decoration: none;
+}
+.social-link svg { width: 20px; height: 20px; flex: 0 0 auto; }
+.social-link:hover { color: var(--cyan); text-decoration: underline; }
+.social-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+.article-social { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+.article-social .social-link { font-weight: 600; }
+.article-social__note { margin: 4px 0 0; font-size: 13px; color: var(--muted); }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 720px) {
   .nav-toggle { display: inline-block; }
