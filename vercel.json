@@ -6,12 +6,17 @@
       "statusCode": 301
     },
     {
+      "source": "/index.html",
+      "has": [
+        { "type": "host", "value": "www.bendrex.it" }
+      ],
+      "destination": "https://bendrex.it/",
+      "statusCode": 301
+    },
+    {
       "source": "/(.*)",
       "has": [
-        {
-          "type": "host",
-          "value": "www.bendrex.it"
-        }
+        { "type": "host", "value": "www.bendrex.it" }
       ],
       "destination": "https://bendrex.it/$1",
       "statusCode": 301
@@ -20,6 +25,17 @@
       "source": "/index.html",
       "destination": "/",
       "statusCode": 301
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "has": [
+        { "type": "host", "value": "bendrex.vercel.app" }
+      ],
+      "headers": [
+        { "key": "X-Robots-Tag", "value": "noindex" }
+      ]
     }
   ]
 }
