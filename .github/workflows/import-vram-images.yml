@@ -1,4 +1,4 @@
-name: Import VRAM images
+name: Import VRAM article
 
 on:
   workflow_dispatch:
@@ -12,29 +12,26 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          ref: main
 
-      - name: Download images
+      - name: Download and extract
         run: |
           set -euo pipefail
-          mkdir -p img
-          curl -fsSL --retry 3 https://files.catbox.moe/l18fes.webp -o img/articolo-vram-8-gb-600x900.webp
-          curl -fsSL --retry 3 https://files.catbox.moe/b6y7us.png -o img/articolo-vram-8-gb-600x900.png
-          curl -fsSL --retry 3 https://files.catbox.moe/j44emy.png -o img/articolo-vram-8-gb-og-1200x630.png
-          curl -fsSL --retry 3 https://files.catbox.moe/c4wbt5.webp -o img/articolo-vram-8-gb-card-1200x630.webp
-          echo "227cec7989c17366938dea590ec314eb  img/articolo-vram-8-gb-600x900.webp" | md5sum -c -
-          echo "c8675944e1d821de089638414986b30d  img/articolo-vram-8-gb-600x900.png" | md5sum -c -
-          echo "398512c9e38b1f828dd008c4a29a1a5b  img/articolo-vram-8-gb-og-1200x630.png" | md5sum -c -
-          echo "b1395dfd64d66692d916c09b7dc2b5a0  img/articolo-vram-8-gb-card-1200x630.webp" | md5sum -c -
+          curl -fsSL --retry 3 https://files.catbox.moe/cb7ui6.gz -o /tmp/site.tar.gz
+          tar -xzf /tmp/site.tar.gz -C .
+          rm -f .github/workflows/import-vram-images.yml
 
       - name: Commit and push
         run: |
           set -euo pipefail
           git config user.name "Bendrex Bot"
           git config user.email "info@bendrex.it"
-          git add img/articolo-vram-8-gb-600x900.webp img/articolo-vram-8-gb-600x900.png img/articolo-vram-8-gb-og-1200x630.png img/articolo-vram-8-gb-card-1200x630.webp
+          git add -A
+          git status --porcelain
           if git diff --cached --quiet; then
             echo "Nothing to commit"
             exit 0
           fi
-          git commit -m "VRAM 8 GB: copertina, OG e immagine card"
+          git commit -m "Articolo VRAM 8 GB: pagina, link in entrata e sitemap"
           git push origin HEAD:main
