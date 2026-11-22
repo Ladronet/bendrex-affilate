@@ -190,11 +190,12 @@
 
   // ---------- Sfondo pixel: monete e cristalli nelle corsie laterali ----------
   // Variante B: le particelle vivono solo nello spazio ai lati della colonna
-  // da 1160 px, mai dietro al testo. Canvas fuori dal flusso, nessuna immagine
-  // e nessuna libreria; sotto i 1024 px non viene creato nulla.
+  // (max-width 1120 px, border-box), mai dietro al testo. Canvas fuori dal
+  // flusso, nessuna immagine e nessuna libreria; sotto i 1024 px non viene
+  // creato nulla.
   var FX_MIN_W = 1024;
-  var FX_GUTTER = 1160;
-  var FX_LANE_MIN = 40;
+  var FX_GUTTER = 1120;
+  var FX_LANE_MIN = 52;
   var FX_FRAME = 1000 / 30;
   var FX_KEY = "bendrex-fx";
   var fxCanvas = null;
@@ -220,79 +221,98 @@
     return fxSeed / 0x7fffffff;
   }
 
-  function fxSprite(rows, colors, unit) {
+  // Moneta 16x16 su griglia vera: disco schiacciato in larghezza
+  // (16 -> 10 -> 4 -> 10 colonne), tre toni, alone e rombo centrale.
+  function fxCoin(unit, w) {
     var c = document.createElement("canvas");
-    c.width = c.height = rows.length * unit;
+    c.width = c.height = 16 * unit;
     var g = c.getContext("2d");
-    for (var y = 0; y < rows.length; y++) {
-      for (var x = 0; x < rows[y].length; x++) {
-        var fill = colors[rows[y].charAt(x)];
-        if (!fill) continue;
-        g.fillStyle = fill;
+    if (w < 6) {
+      for (var y = 2; y < 14; y++) {
+        for (var x = 6; x < 10; x++) {
+          var edge = x === 6 || x === 9;
+          var tip = x === 7 && y > 2 && y < 6;
+          g.fillStyle = edge ? "rgba(146,64,14,0.25)" : tip ? "rgba(253,230,138,0.65)" : "rgba(251,191,36,0.60)";
+          g.fillRect(x * unit, y * unit, unit, unit);
+        }
+      }
+      return c;
+    }
+    var rx = Math.min(w / 2 - 0.4, 7.2);
+    var ry = 7.2;
+    for (var y = 0; y < 16; y++) {
+      for (var x = 0; x < 16; x++) {
+        var dx = (x + 0.5 - 8) / rx;
+        var dy = (y + 0.5 - 8) / ry;
+        var d = Math.sqrt(dx * dx + dy * dy);
+        var col = "";
+        if (d <= 1) {
+          col = "rgba(251,191,36,0.60)";
+          if (d > 0.9) col = "rgba(146,64,14,0.25)";
+          else if (dx < -0.15 && dy < -0.15 && d < 0.6) col = "rgba(253,230,138,0.65)";
+        } else if (d <= 1.08) {
+          col = "rgba(120,53,15,0.25)";
+        }
+        if (col) {
+          g.fillStyle = col;
+          g.fillRect(x * unit, y * unit, unit, unit);
+        }
+      }
+    }
+    g.fillStyle = "rgba(146,64,14,0.58)";
+    [[8, 7], [7, 8], [9, 8], [8, 9]].forEach(function (p) {
+      g.fillRect(p[0] * unit, p[1] * unit, unit, unit);
+    });
+    return c;
+  }
+
+  // Capsula XP 8x16: tre bande di riempimento, bordo e alone a bassa alpha.
+  function fxXp(unit) {
+    var c = document.createElement("canvas");
+    c.width = 8 * unit;
+    c.height = 16 * unit;
+    var g = c.getContext("2d");
+    var bands = ["rgba(34,211,238,0.60)", "rgba(96,165,250,0.60)", "rgba(167,139,250,0.60)"];
+    for (var y = 0; y < 16; y++) {
+      var x0 = y === 0 || y === 15 ? 2 : y === 1 || y === 14 ? 1 : 0;
+      var x1 = 7 - x0;
+      for (var x = x0; x <= x1; x++) {
+        var edge = x === x0 || x === x1;
+        var col;
+        if (edge || y < 2 || y > 13) col = "rgba(14,116,144,0.25)";
+        else if (y < 6) col = bands[0];
+        else if (y < 10) col = bands[1];
+        else col = bands[2];
+        if (!edge && x === 1 && y > 2 && y < 13) col = "rgba(207,250,254,0.25)";
+        g.fillStyle = col;
         g.fillRect(x * unit, y * unit, unit, unit);
       }
     }
     return c;
   }
 
-  function fxRotate(rows) {
-    var out = [];
-    for (var x = 0; x < rows.length; x++) {
-      var line = "";
-      for (var y = rows.length - 1; y >= 0; y--) line += rows[y].charAt(x);
-      out.push(line);
-    }
-    return out;
-  }
-
-  // Sprite pre-renderizzati: 4 rotazioni da 90° per le monete, 2 palette per
-  // i cristalli, due scale (vicino/lontano). Nessun disegno per pixel nel loop.
+  // Sprite pre-renderizzati a due scale: 2x (lontano) e 3x (vicino).
   function fxBuild() {
     if (fxSprites) return;
-    var coin = [
-      " ##### ",
-      "#YYYYY#",
-      "#YWWYY#",
-      "#YWYYY#",
-      "#YYYYY#",
-      "#YYYYY#",
-      " ##### "
-    ];
-    var gem = [
-      "  ##  ",
-      " #CC# ",
-      "#CWWC#",
-      "#CWWC#",
-      " #CC# ",
-      "  ##  "
-    ];
-    var coinColors = { "#": "#5B3A08", "Y": "#FBBF24", "W": "#FDE68A" };
-    var cyan = { "#": "#0E7490", "C": "#22D3EE", "W": "#CFFAFE" };
-    var violet = { "#": "#6D28D9", "C": "#A78BFA", "W": "#E9D5FF" };
     var coins = [];
-    var gems = [];
-    [1, 2].forEach(function (unit) {
-      var frames = [];
-      var rows = coin;
-      for (var i = 0; i < 4; i++) {
-        frames.push(fxSprite(rows, coinColors, unit));
-        rows = fxRotate(rows);
-      }
-      coins.push(frames);
-      gems.push([fxSprite(gem, cyan, unit), fxSprite(gem, violet, unit)]);
+    var xp = [];
+    [2, 3].forEach(function (unit) {
+      coins.push([fxCoin(unit, 16), fxCoin(unit, 10), fxCoin(unit, 4), fxCoin(unit, 10)]);
+      xp.push(fxXp(unit));
     });
-    fxSprites = { coins: coins, gems: gems };
+    fxSprites = { coins: coins, xp: xp };
   }
 
   function fxMake() {
     fxParts = [];
-    for (var i = 0; i < 24; i++) {
+    for (var i = 0; i < 32; i++) {
       fxParts.push({
         lane: i % 2,
-        gem: i % 3 === 0,
-        depth: (i >> 1) % 2,
-        color: i % 2,
-        size: 0,
+        gem: (i >> 1) % 4 === 3,
+        depth: (i >> 3) % 2,
+        unit: 2,
+        w: 0,
+        h: 0,
         x: 0,
         y: 0,
         vx: 0,
@@ -300,26 +320,27 @@
         rot: 0,
         spin: 0,
         spinT: 0,
-        alpha: 1
+        tick: 0
       });
     }
   }
 
   function fxSpawn(p, initial) {
     var near = p.depth === 0;
-    var size = p.gem ? (near ? 12 : 6) : (near ? 14 : 7);
+    p.unit = near && fxLane >= 60 ? 3 : 2;
+    p.w = (p.gem ? 8 : 16) * p.unit;
+    p.h = 16 * p.unit;
     var minX = p.lane ? fxW - fxLane + 4 : 4;
-    var maxX = (p.lane ? fxW - 4 : fxLane - 4) - size;
+    var maxX = (p.lane ? fxW - 4 : fxLane - 4) - p.w;
     if (maxX < minX) maxX = minX;
-    p.size = size;
     p.x = minX + fxRand() * (maxX - minX);
-    p.y = initial ? fxRand() * fxH : -size - fxRand() * 160;
+    p.y = initial ? fxRand() * fxH : -p.h - fxRand() * 160;
     p.vy = (near ? 58 : 26) + fxRand() * (near ? 34 : 20);
     p.vx = (fxRand() * 2 - 1) * (near ? 8 : 4);
     p.rot = (fxRand() * 4) | 0;
     p.spin = 300 + fxRand() * 380;
     p.spinT = 0;
-    p.alpha = near ? 1 : 0.6;
+    p.tick = fxRand() * 2;
   }
 
   function fxDraw(dt) {
@@ -329,26 +350,35 @@
     for (var i = 0; i < fxParts.length; i++) {
       var p = fxParts[i];
       var minX = p.lane ? fxW - fxLane + 4 : 4;
-      var maxX = (p.lane ? fxW - 4 : fxLane - 4) - p.size;
+      var maxX = (p.lane ? fxW - 4 : fxLane - 4) - p.w;
       if (maxX < minX) maxX = minX;
       if (dt > 0) {
         p.y += p.vy * dt;
         p.x += p.vx * dt;
         p.spinT += dt * 1000;
+        p.tick += dt;
         if (p.spinT >= p.spin) {
           p.spinT = 0;
           p.rot = (p.rot + 1) & 3;
         }
         if (p.x < minX) { p.x = minX; p.vx = -p.vx; }
         if (p.x > maxX) { p.x = maxX; p.vx = -p.vx; }
-        if (p.y > fxH + p.size) fxSpawn(p, false);
+        if (p.y > fxH + p.h) fxSpawn(p, false);
       }
-      g.globalAlpha = p.alpha;
-      var scale = p.depth === 0 ? 1 : 0;
-      var sprite = p.gem
-        ? fxSprites.gems[scale][p.color]
-        : fxSprites.coins[scale][p.rot];
-      g.drawImage(sprite, Math.round(p.x), Math.round(p.y));
+      g.globalAlpha = p.depth === 0 ? 1 : 0.35;
+      var scale = p.unit === 3 ? 1 : 0;
+      var sprite = p.gem ? fxSprites.xp[scale] : fxSprites.coins[scale][p.rot];
+      var px = Math.round(p.x);
+      var py = Math.round(p.y);
+      g.drawImage(sprite, px, py);
+      if (p.gem) {
+        var t1 = 12 - ((p.tick * 6) | 0) % 9;
+        var t2 = t1 - 4;
+        if (t2 < 2) t2 += 9;
+        g.fillStyle = "rgba(224,242,254,0.65)";
+        g.fillRect(px + 2 * p.unit, py + t1 * p.unit, p.unit, 2 * p.unit);
+        g.fillRect(px + 5 * p.unit, py + t2 * p.unit, p.unit, 2 * p.unit);
+      }
     }
     g.globalAlpha = 1;
   }
@@ -426,6 +456,7 @@
     fxCanvas = document.createElement("canvas");
     fxCanvas.id = "fx-canvas";
     fxCanvas.setAttribute("aria-hidden", "true");
+    fxCanvas.style.opacity = "1"; // alpha per pixel negli sprite, niente velo uniforme
     document.body.appendChild(fxCanvas);
     fxResize();
 
