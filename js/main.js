@@ -190,11 +190,10 @@
 
   // ---------- Sfondo pixel: monete e cristalli nelle corsie laterali ----------
   // Variante B: le particelle vivono solo nello spazio ai lati della colonna
-  // (max-width 1120 px, border-box), mai dietro al testo. Canvas fuori dal
-  // flusso, nessuna immagine e nessuna libreria; sotto i 1024 px non viene
-  // creato nulla.
+  // da 1160 px, mai dietro al testo. Canvas fuori dal flusso, nessuna immagine
+  // e nessuna libreria; sotto i 1024 px non viene creato nulla.
   var FX_MIN_W = 1024;
-  var FX_GUTTER = 1120;
+  var FX_GUTTER = 1160;
   var FX_LANE_MIN = 52;
   var FX_FRAME = 1000 / 30;
   var FX_KEY = "bendrex-fx";
@@ -327,11 +326,13 @@
 
   function fxSpawn(p, initial) {
     var near = p.depth === 0;
-    p.unit = near && fxLane >= 60 ? 3 : 2;
+    var passo = Math.max(2, Math.min(3, Math.floor((fxLane - 8) / 16)));
+    p.unit = near ? passo : 2;
     p.w = (p.gem ? 8 : 16) * p.unit;
     p.h = 16 * p.unit;
-    var minX = p.lane ? fxW - fxLane + 4 : 4;
-    var maxX = (p.lane ? fxW - 4 : fxLane - 4) - p.w;
+    var margin = fxLane - 4 - p.w <= 4 ? 2 : 4;
+    var minX = p.lane ? fxW - fxLane + margin : margin;
+    var maxX = (p.lane ? fxW - margin : fxLane - margin) - p.w;
     if (maxX < minX) maxX = minX;
     p.x = minX + fxRand() * (maxX - minX);
     p.y = initial ? fxRand() * fxH : -p.h - fxRand() * 160;
@@ -349,8 +350,9 @@
     if (fxLane < FX_LANE_MIN) return;
     for (var i = 0; i < fxParts.length; i++) {
       var p = fxParts[i];
-      var minX = p.lane ? fxW - fxLane + 4 : 4;
-      var maxX = (p.lane ? fxW - 4 : fxLane - 4) - p.w;
+      var margin = fxLane - 4 - p.w <= 4 ? 2 : 4;
+      var minX = p.lane ? fxW - fxLane + margin : margin;
+      var maxX = (p.lane ? fxW - margin : fxLane - margin) - p.w;
       if (maxX < minX) maxX = minX;
       if (dt > 0) {
         p.y += p.vy * dt;
