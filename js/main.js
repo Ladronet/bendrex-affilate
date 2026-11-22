@@ -187,4 +187,300 @@
       focusSection(el);
     });
   }
+
+  // ---------- Sfondo pixel: monete e cristalli nelle corsie laterali ----------
+  // Variante B: le particelle vivono solo nello spazio ai lati della colonna
+  // da 1160 px, mai dietro al testo. Canvas fuori dal flusso, nessuna immagine
+  // e nessuna libreria; sotto i 1024 px non viene creato nulla.
+  var FX_MIN_W = 1024;
+  var FX_GUTTER = 1160;
+  var FX_LANE_MIN = 40;
+  var FX_FRAME = 1000 / 30;
+  var FX_KEY = "bendrex-fx";
+  var fxCanvas = null;
+  var fxToggle = null;
+  var fxRaf = 0;
+  var fxLast = 0;
+  var fxAcc = 0;
+  var fxRunning = false;
+  var fxPaused = false;
+  var fxW = 0;
+  var fxH = 0;
+  var fxLane = 0;
+  var fxParts = [];
+  var fxSprites = null;
+  var fxSeed = 20261122;
+  var fxBound = false;
+  var fxTimer = 0;
+  var fxQueued = false;
+
+  // PRNG deterministico e senza allocazione: evita Math.random nel loop.
+  function fxRand() {
+    fxSeed = (fxSeed * 1103515245 + 12345) & 0x7fffffff;
+    return fxSeed / 0x7fffffff;
+  }
+
+  function fxSprite(rows, colors, unit) {
+    var c = document.createElement("canvas");
+    c.width = c.height = rows.length * unit;
+    var g = c.getContext("2d");
+    for (var y = 0; y < rows.length; y++) {
+      for (var x = 0; x < rows[y].length; x++) {
+        var fill = colors[rows[y].charAt(x)];
+        if (!fill) continue;
+        g.fillStyle = fill;
+        g.fillRect(x * unit, y * unit, unit, unit);
+      }
+    }
+    return c;
+  }
+
+  function fxRotate(rows) {
+    var out = [];
+    for (var x = 0; x < rows.length; x++) {
+      var line = "";
+      for (var y = rows.length - 1; y >= 0; y--) line += rows[y].charAt(x);
+      out.push(line);
+    }
+    return out;
+  }
+
+  // Sprite pre-renderizzati: 4 rotazioni da 90° per le monete, 2 palette per
+  // i cristalli, due scale (vicino/lontano). Nessun disegno per pixel nel loop.
+  function fxBuild() {
+    if (fxSprites) return;
+    var coin = [
+      " ##### ",
+      "#YYYYY#",
+      "#YWWYY#",
+      "#YWYYY#",
+      "#YYYYY#",
+      "#YYYYY#",
+      " ##### "
+    ];
+    var gem = [
+      "  ##  ",
+      " #CC# ",
+      "#CWWC#",
+      "#CWWC#",
+      " #CC# ",
+      "  ##  "
+    ];
+    var coinColors = { "#": "#5B3A08", "Y": "#FBBF24", "W": "#FDE68A" };
+    var cyan = { "#": "#0E7490", "C": "#22D3EE", "W": "#CFFAFE" };
+    var violet = { "#": "#6D28D9", "C": "#A78BFA", "W": "#E9D5FF" };
+    var coins = [];
+    var gems = [];
+    [1, 2].forEach(function (unit) {
+      var frames = [];
+      var rows = coin;
+      for (var i = 0; i < 4; i++) {
+        frames.push(fxSprite(rows, coinColors, unit));
+        rows = fxRotate(rows);
+      }
+      coins.push(frames);
+      gems.push([fxSprite(gem, cyan, unit), fxSprite(gem, violet, unit)]);
+    });
+    fxSprites = { coins: coins, gems: gems };
+  }
+
+  function fxMake() {
+    fxParts = [];
+    for (var i = 0; i < 24; i++) {
+      fxParts.push({
+        lane: i % 2,
+        gem: i % 3 === 0,
+        depth: (i >> 1) % 2,
+        color: i % 2,
+        size: 0,
+        x: 0,
+        y: 0,
+        vx: 0,
+        vy: 0,
+        rot: 0,
+        spin: 0,
+        spinT: 0,
+        alpha: 1
+      });
+    }
+  }
+
+  function fxSpawn(p, initial) {
+    var near = p.depth === 0;
+    var size = p.gem ? (near ? 12 : 6) : (near ? 14 : 7);
+    var minX = p.lane ? fxW - fxLane + 4 : 4;
+    var maxX = (p.lane ? fxW - 4 : fxLane - 4) - size;
+    if (maxX < minX) maxX = minX;
+    p.size = size;
+    p.x = minX + fxRand() * (maxX - minX);
+    p.y = initial ? fxRand() * fxH : -size - fxRand() * 160;
+    p.vy = (near ? 58 : 26) + fxRand() * (near ? 34 : 20);
+    p.vx = (fxRand() * 2 - 1) * (near ? 8 : 4);
+    p.rot = (fxRand() * 4) | 0;
+    p.spin = 300 + fxRand() * 380;
+    p.spinT = 0;
+    p.alpha = near ? 1 : 0.6;
+  }
+
+  function fxDraw(dt) {
+    var g = fxCanvas.getContext("2d");
+    g.clearRect(0, 0, fxW, fxH);
+    if (fxLane < FX_LANE_MIN) return;
+    for (var i = 0; i < fxParts.length; i++) {
+      var p = fxParts[i];
+      var minX = p.lane ? fxW - fxLane + 4 : 4;
+      var maxX = (p.lane ? fxW - 4 : fxLane - 4) - p.size;
+      if (maxX < minX) maxX = minX;
+      if (dt > 0) {
+        p.y += p.vy * dt;
+        p.x += p.vx * dt;
+        p.spinT += dt * 1000;
+        if (p.spinT >= p.spin) {
+          p.spinT = 0;
+          p.rot = (p.rot + 1) & 3;
+        }
+        if (p.x < minX) { p.x = minX; p.vx = -p.vx; }
+        if (p.x > maxX) { p.x = maxX; p.vx = -p.vx; }
+        if (p.y > fxH + p.size) fxSpawn(p, false);
+      }
+      g.globalAlpha = p.alpha;
+      var scale = p.depth === 0 ? 1 : 0;
+      var sprite = p.gem
+        ? fxSprites.gems[scale][p.color]
+        : fxSprites.coins[scale][p.rot];
+      g.drawImage(sprite, Math.round(p.x), Math.round(p.y));
+    }
+    g.globalAlpha = 1;
+  }
+
+  function fxFrame(now) {
+    if (!fxRunning) return;
+    fxRaf = window.requestAnimationFrame(fxFrame);
+    var dt = now - fxLast;
+    fxLast = now;
+    if (dt < 0) dt = 0;
+    fxAcc += dt;
+    if (fxAcc < FX_FRAME) return;
+    var step = Math.min(fxAcc, 100);
+    fxAcc = 0;
+    fxDraw(step / 1000);
+  }
+
+  function fxStart() {
+    if (!fxCanvas || fxRunning || fxPaused || document.hidden) return;
+    fxRunning = true;
+    fxLast = window.performance.now();
+    fxAcc = FX_FRAME;
+    fxRaf = window.requestAnimationFrame(fxFrame);
+  }
+
+  function fxStop() {
+    fxRunning = false;
+    if (fxRaf) window.cancelAnimationFrame(fxRaf);
+    fxRaf = 0;
+  }
+
+  function fxSetPaused(paused, save) {
+    fxPaused = paused;
+    document.documentElement.classList.toggle("no-fx", paused);
+    if (fxToggle) {
+      fxToggle.setAttribute("aria-pressed", paused ? "true" : "false");
+      fxToggle.setAttribute("aria-label", paused ? "Riprendi animazioni" : "Pausa animazioni");
+      fxToggle.textContent = paused ? "\u25B6" : "II";
+    }
+    if (save) {
+      try { localStorage.setItem(FX_KEY, paused ? "off" : "on"); } catch (e) {}
+    }
+    if (paused) fxStop();
+    else fxStart();
+  }
+
+  function fxResize() {
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    fxW = document.documentElement.clientWidth;
+    fxH = document.documentElement.clientHeight;
+    fxLane = (fxW - FX_GUTTER) / 2;
+    fxCanvas.width = Math.round(fxW * dpr);
+    fxCanvas.height = Math.round(fxH * dpr);
+    var g = fxCanvas.getContext("2d");
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.imageSmoothingEnabled = false;
+  }
+
+  function fxCanRun() {
+    var w = document.documentElement.clientWidth;
+    if (w < FX_MIN_W || (w - FX_GUTTER) / 2 < FX_LANE_MIN) return false;
+    var c = navigator.connection;
+    if (c && (c.saveData || c.effectiveType === "slow-2g" || c.effectiveType === "2g" || c.effectiveType === "3g")) return false;
+    return true;
+  }
+
+  function fxBuildDom() {
+    if (fxCanvas || !fxCanRun()) return;
+    fxBuild();
+    if (!fxParts.length) fxMake();
+    var saved = null;
+    try { saved = localStorage.getItem(FX_KEY); } catch (e) {}
+    fxPaused = saved ? saved === "off" : window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    fxCanvas = document.createElement("canvas");
+    fxCanvas.id = "fx-canvas";
+    fxCanvas.setAttribute("aria-hidden", "true");
+    document.body.appendChild(fxCanvas);
+    fxResize();
+
+    fxToggle = document.createElement("button");
+    fxToggle.type = "button";
+    fxToggle.id = "fx-toggle";
+    fxToggle.addEventListener("click", function () { fxSetPaused(!fxPaused, true); });
+    document.body.appendChild(fxToggle);
+
+    for (var i = 0; i < fxParts.length; i++) fxSpawn(fxParts[i], true);
+    fxSetPaused(fxPaused, false);
+    if (fxPaused) fxDraw(0);
+  }
+
+  function fxTeardown() {
+    fxStop();
+    if (fxCanvas && fxCanvas.parentNode) fxCanvas.parentNode.removeChild(fxCanvas);
+    if (fxToggle && fxToggle.parentNode) fxToggle.parentNode.removeChild(fxToggle);
+    fxCanvas = null;
+    fxToggle = null;
+  }
+
+  function fxSync() {
+    if (!fxCanRun()) { if (fxCanvas) fxTeardown(); return; }
+    if (!fxCanvas) { fxBuildDom(); return; }
+    fxResize();
+    for (var i = 0; i < fxParts.length; i++) fxSpawn(fxParts[i], true);
+    if (fxPaused) fxDraw(0);
+  }
+
+  function fxInit() {
+    if (!fxCanRun()) return;
+    fxBuildDom();
+    if (fxBound) return;
+    fxBound = true;
+    window.addEventListener("resize", function () {
+      window.clearTimeout(fxTimer);
+      fxTimer = window.setTimeout(fxSync, 160);
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) fxStop();
+      else if (!fxPaused) fxStart();
+    });
+  }
+
+  function fxQueue() {
+    if (fxQueued) return;
+    fxQueued = true;
+    if ("requestIdleCallback" in window) {
+      window.requestIdleCallback(fxInit, { timeout: 1800 });
+    } else {
+      window.setTimeout(fxInit, 160);
+    }
+  }
+
+  if (document.readyState === "complete") fxQueue();
+  else window.addEventListener("load", fxQueue);
 })();
