@@ -31,6 +31,9 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  /* Isola lo stacking context: il canvas decorativo (z-index: -1) resta
+     sopra il fondo del body e sotto ogni contenuto. */
+  isolation: isolate;
   background:
     radial-gradient(1200px 600px at 80% -10%, rgba(168, 85, 247, 0.12), transparent 60%),
     radial-gradient(900px 500px at 10% 0%, rgba(34, 211, 238, 0.10), transparent 55%),
@@ -252,7 +255,7 @@ img, svg { max-width: 100%; height: auto; display: block; }
 .btn-ghost { border-color: var(--line); color: var(--text); background: transparent; }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.04); }
 
-/* ---------- Glitch (sottile) ---------- */
+/* ---------- Glitch (softtle) ---------- */
 .glitch { position: relative; display: inline-block; }
 .glitch::before,
 .glitch::after {
@@ -572,6 +575,49 @@ tbody tr:hover { background: rgba(34, 211, 238, 0.04); }
     animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
+}
+
+/* ---------- Sfondo pixel: monete e cristalli nelle corsie laterali ---------- */
+/* Variante B: solo le fasce ai lati della colonna (1160 px); il canvas non
+   copre mai il testo, non riceve eventi e sta dietro al contenuto. */
+#fx-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.22;
+  pointer-events: none;
+}
+
+#fx-toggle {
+  display: none;
+  position: fixed;
+  right: 12px;
+  bottom: 12px;
+  z-index: 60;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: rgba(7, 8, 12, 0.86);
+  color: var(--muted);
+  font: 13px/1 var(--font-mono);
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+#fx-toggle:hover { color: var(--text); border-color: rgba(34, 211, 238, 0.45); }
+
+#fx-toggle:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 2px;
+  color: var(--text);
+}
+
+@media (min-width: 1024px) {
+  #fx-toggle { display: block; }
 }
 
 /* ---------- Mobile touch & breathing room ---------- */
