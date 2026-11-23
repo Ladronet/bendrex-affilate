@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VRM, chipset, PCIe e slot M.2: cosa conta davvero in una scheda madre per giocare e cosa si può ignorare, con i dati misurati e non con le sigle." />
+  <title>Come scegliere la scheda madre: VRM, chipset, PCIe e M.2</title>
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#07080C" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="canonical" href="https://bendrex.it/articolo-scheda-madre.html">
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Bendrex" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:title" content="Come scegliere la scheda madre: VRM, chipset, PCIe e M.2" />
+  <meta property="og:description" content="VRM, chipset, PCIe e slot M.2: cosa conta davvero in una scheda madre per giocare e cosa si può ignorare, con i dati misurati e non con le sigle." />
+  <meta property="og:url" content="https://bendrex.it/articolo-scheda-madre.html" />
+  <meta property="og:image" content="https://bendrex.it/img/articolo-scheda-madre-og-1200x630.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Come scegliere la scheda madre: VRM, chipset, PCIe e M.2" />
+  <meta name="twitter:description" content="VRM, chipset, PCIe e slot M.2: cosa conta davvero in una scheda madre per giocare e cosa si può ignorare, con i dati misurati e non con le sigle." />
+  <meta name="twitter:image" content="https://bendrex.it/img/articolo-scheda-madre-og-1200x630.jpg" />
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Bendrex",
+      "url": "https://bendrex.it/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bendrex.it/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://www.instagram.com/bendrex_officialsite/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Bendrex",
+      "url": "https://bendrex.it/",
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bendrex.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Build PC",
+          "item": "https://bendrex.it/build-pc.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Scheda madre",
+          "item": "https://bendrex.it/articolo-scheda-madre.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Scheda madre: cosa conta davvero e cosa si può ignorare",
+      "description": "VRM, chipset, PCIe e slot M.2: cosa conta davvero in una scheda madre per giocare e cosa si può ignorare, con i dati misurati e non con le sigle.",
+      "image": [
+        "https://bendrex.it/img/articolo-scheda-madre-og-1200x630.jpg"
+      ],
+      "datePublished": "2026-11-23T00:00:00+01:00",
+      "dateModified": "2026-11-23T00:00:00+01:00",
+      "author": {
+        "@type": "Organization",
+        "name": "Redazione BENDREX"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Redazione BENDREX",
+        "url": "https://bendrex.it/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bendrex.it/articolo-scheda-madre.html"
+      },
+      "inLanguage": "it-IT"
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Salta al contenuto</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Principale">
+      <a class="brand" href="/">BENDREX<span class="dot">.IT</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Apri menu">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="build-pc.html">Build PC</a></li>
+        <li><a href="blog.html" aria-current="page">Blog/Forum</a></li>
+        <li><a href="cup-of-game.html">Cup of Game</a></li>
+        <li><a href="eventi.html">Eventi Live</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <p class="back-link" aria-label="Percorso"><a href="/">Home</a> › <a href="build-pc.html">Build PC</a> › <span aria-current="page">Scheda madre</span></p>
+      <span class="eyebrow">Blog · Hardware</span>
+      <h1>Scheda madre: cosa conta davvero e cosa si può ignorare</h1>
+      <picture>
+        <source srcset="img/articolo-scheda-madre-600x900.webp" type="image/webp" />
+        <img class="hero-keyart" src="img/articolo-scheda-madre-600x900.png" alt="Scheda madre stilizzata vista dall'alto su fondo scuro, con zoccolo della CPU, fasi VRM, slot PCIe e M.2 e chipset evidenziati in neon." width="600" height="900" fetchpriority="high" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="section container article" aria-label="Articolo">
+      <p class="spec-muted"><time datetime="2026-11-23">23 novembre 2026</time> · Redazione BENDREX</p>
+
+      <div class="notice">
+        <p><strong>In breve</strong></p>
+        <ul>
+          <li>Il VRM non si misura dal numero di fasi: contano gli ampere dello stadio e il metallo del dissipatore.</li>
+          <li>Da PCIe 5.0 a 4.0 sullo slot grafico si perde circa l'1%, ma uno slot lungo cablato x4 costa fino all'11%.</li>
+          <li>Il nome del chipset non dice la generazione dello slot: va letta la scheda tecnica.</li>
+        </ul>
+      </div>
+
+      <p>Come scegliere la scheda madre, in pratica, vuol dire guardare quattro cose e ignorarne altre dieci. Le quattro sono VRM, generazione e cablaggio degli slot, alloggi M.2 con le loro condivisioni e linee del chipset. Sigle, lucine e Wi-Fi 7 su un PC cablato vengono dopo.</p>
+
+      <h2>VRM e fasi: quante ne servono davvero</h2>
+      <p>Il VRM porta i 12 V dell'alimentatore a 1,0-1,3 V per la CPU. A 1,2 V e 200 W passano circa 167 A: è un convertitore di corrente, e il numero che conta è quanti ampere può attraversarlo, non quante fasi dice la sigla.</p>
+      <p>Una fase è un induttore più uno stadio di potenza, e il limite lo dà lo stadio. La ASUS TUF Gaming B850-Pro monta 14+2+1 fasi con stadi Vishay SiC629 da 80 A; la ASRock B860 Challenger, circa 130 dollari, monta 10+1+1+1 con stadi SiC623 da 60 A. Un «6+2» con stadi da 50-60 A arriva a 300-360 A teorici sul core: più del doppio dei circa 100 A di un Ryzen 7 9800X3D, che ha 120 W di TDP.</p>
+      <p>I test lo confermano. Un Ryzen 9 9950X da 170 W, con picchi a 230, su una scheda 14+2+1 da 80 A ha tenuto il VRM sotto i 70 °C tranne un sensore, dopo venti minuti di carico pieno e poco flusso d'aria. Un Core Ultra 9 285K da 250 W, su quella scheda da 130 dollari, è rimasto sotto i 75 °C dopo mezz'ora. Una CPU da gioco tra 65 e 120 W non mette in crisi un 6+2 da 50 A: il 12+2+2 serve ai 16 core, all'overclock e ai render lunghi.</p>
+      <p>Il dissipatore del VRM conta più della fase in più: nella recensione ASUS quelli con poco metallo si saturano in fretta con un 16 core a pieno carico. E due «12+2+2» possono avere dodici stadi reali oppure sei fasi raddoppiate. Nessuna fonte normalizza questi nomi, quindi contano il modello dello stadio e la superficie dissipata.</p>
+      <p>Un solo EPS da 8 pin basta per CPU tra 120 e 250 W; il secondo, come sulla MSI X870E GAMING PLUS, serve a ripartire il carico e per overclock.</p>
+
+      <h2>PCIe e M.2: cosa controllare nella scheda</h2>
+      <p>PCIe 4.0 x16 dà 31,5 GB/s, PCIe 5.0 x16 dà 63,0 GB/s, PCIe 4.0 x4 scende a 7,9 GB/s. TechPowerUp ha misurato la RTX 5090, cioè il caso peggiore, su un Ryzen 7 9800X3D: da 5.0 a 4.0 x16 si perde circa l'1% a 1080p, 1440p e 4K; a x8 il 4% a 1080p e 1440p e il 2% a 4K; su uno slot x16 cablato x4 l'11% a 1080p, il 10% a 1440p e il 6% a 4K. Con il ray tracing, a 4.0 x16 o a 5.0 x8, non si perde nulla.</p>
+      <p>Quindi PCIe 5.0 per la scheda video non giustifica un prezzo più alto. Il pericolo è il cablaggio: la MSI X870E GAMING PLUS ha uno slot lungo x16 collegato a x4 dal chipset, e metterci la GPU costa fino all'11% a 1080p.</p>
+      <p>Per gli M.2 la domanda è chi perde le linee. Sulla ASUS TUF GAMING B650-PLUS il primo M.2 è Gen5 x4 dalla CPU, il secondo Gen4 x4 dalla CPU, il terzo Gen4 x4 dal chipset: proprio il terzo spegne PCIEX16_2 quando è occupato. Sulla MSI X870E i tre M.2 sono indipendenti. Su LGA1851 la CPU dà 20 linee Gen5, sedici per la GPU e quattro per un M.2, più quattro Gen4, quindi un SSD Gen5 non toglie linee alla scheda video; su LGA1700 si trovavano M.2 Gen5 ricavati portando lo slot grafico a x8.</p>
+      <p>Resta il calore. Nel test della TUF B850-Pro un SSD Gen4 sta lontano dal throttling, mentre un Gen5 double-sided ci finisce dopo una trentina di secondi anche con il dissipatore della scheda, perché il lato inferiore resta scoperto: servono un SSD single-sided o un dissipatore di terze parti. Il dissipatore M.2 incluso è quindi un criterio di scelta, e questa è una deduzione dai test.</p>
+
+      <h2>B650 o B850? Cosa cambia davvero tra i chipset</h2>
+      <p>La tabella AMD per AM5, linee totali e di cui Gen5: X870E 44/24, X870 36/24, B850 36/4, B840 34/0, A620 e A620A 32/0. La CPU porta 24 linee Gen5 utilizzabili: sedici per la GPU, quattro per un M.2 e quattro verso il chipset. Il chipset aggiunge linee per gli altri slot e per gli M.2 secondari, e decide USB4. Quale scheda madre scegliere tra B650 e B850 è quindi una domanda su linee e porte, non sulle prestazioni in gioco.</p>
+      <p>Nella tabella AMD la grafica di B850 è indicata come PCIe 4.0, ma la generazione dello slot si legge nella scheda della scheda madre. La ASUS TUF B850-Pro dichiara uno slot x16 PCIe 5.0; la TUF B650-PLUS dichiara x16 PCIe 4.0. Regola pratica: aprire la riga «Expansion slots» della scheda scelta.</p>
+      <p>Su Intel la differenza si chiama DMI, la banda verso il chipset: Z890 ha DMI x8 e 24 linee PCIe 4.0, B860 ha DMI x4, 7,9 GB/s, e 14 linee. Con molti dispositivi collegati la differenza si può sentire, in gioco no. A620, infine, non abilita l'overclock della CPU: il suo limite vero è quello, non il numero di fasi.</p>
+
+      <div class="notice">
+        <p><strong>Nota su date e prezzi.</strong> Prezzi rilevati il 23 novembre 2026 su Amazon.it, IVA inclusa, disponibilità variabile. È un'istantanea di una settimana di Black Friday, non un listino: entry AM5 con A620M a 70,92 €, B650 a 123,99 €, B860M a 123,73 €, B850 tra 169,99 e 205,80 €, X870E a 209,99 €. Servono a capire quanto separa le fasce, non a scegliere un modello.</p>
+      </div>
+
+      <h2 class="section-title">Domande frequenti</h2>
+      <ul class="faq-list">
+        <li><strong>Quante fasi servono per una CPU da gioco?</strong><p>Un 6+2 con stadi da 50-60 A basta per CPU tra 65 e 120 W: contano modello dello stadio e dissipatore, non il numero davanti al più.</p></li>
+        <li><strong>Serve PCIe 5.0 per la scheda video?</strong><p>No. Da 5.0 x16 a 4.0 x16 si perde circa l'1% anche sulla GPU più veloce. Conta invece che lo slot sia davvero cablato x16.</p></li>
+        <li><strong>Tra B650 e B850 cosa cambia in gioco?</strong><p>Nulla, se lo slot grafico e gli M.2 sono quelli che servono. Cambiano linee del chipset, USB4 e quante periferiche regge.</p></li>
+        <li><strong>Una scheda madre economica può danneggiare la CPU?</strong><p>Non risulta: una scheda da 130 dollari con dieci stadi da 60 A ha tenuto un 250 W sotto i 75 °C. Il rischio reale è il throttling con carichi lunghi e poca aria nel case.</p></li>
+      </ul>
+
+      <p class="spec-muted"><strong>Fonti</strong></p>
+      <ul class="related-list">
+        <li>AMD, «AMD Socket AM5 Chipsets», tabella chipset, <a href="https://www.amd.com/en/products/processors/chipsets/am5.html" target="_blank" rel="noopener noreferrer">amd.com</a> (23/11/2026)</li>
+        <li>AMD, pagina prodotto Ryzen 7 9800X3D, TDP 120 W (23/11/2026)</li>
+        <li>TechPowerUp, «NVIDIA GeForce RTX 5090 PCI-Express Scaling», 23/01/2025, <a href="https://www.techpowerup.com/review/nvidia-geforce-rtx-5090-pci-express-scaling/" target="_blank" rel="noopener noreferrer">techpowerup.com</a></li>
+        <li>TechPowerUp, «ASUS TUF Gaming B850-Pro Wi-Fi7 W Neo Review», 17/06/2026</li>
+        <li>TechPowerUp, «ASRock B860 Challenger Wi-Fi Review», 11/09/2026</li>
+        <li>ASUS, specifiche TUF GAMING B650-PLUS WIFI, slot e condivisione con PCIEX16_2 (23/11/2026)</li>
+        <li>MSI, specifiche X870E GAMING PLUS WIFI, slot e tre M.2 (23/11/2026)</li>
+        <li>Wikipedia, «List of Intel chipsets», DMI e linee di Z890 e B860 (23/11/2026)</li>
+        <li>Wikipedia, «Arrow Lake (microprocessor)», 20 linee Gen5 più 4 Gen4, DMI 4.0 x8 (23/11/2026)</li>
+        <li>Wikipedia, «Socket AM5», 24 linee Gen5 e PPT fino a 230 W (23/11/2026)</li>
+        <li>Wikipedia, «PCI Express», tabella delle bande (23/11/2026)</li>
+        <li>Amazon.it, pagine di ricerca schede madri, prezzi rilevati il 23/11/2026</li>
+      </ul>
+
+      <aside class="article-social" aria-label="Seguici su Instagram">
+        <a class="social-link" href="https://www.instagram.com/bendrex_officialsite/" target="_blank" rel="noopener noreferrer" aria-label="Instagram ufficiale di Bendrex, si apre in una nuova scheda"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Seguici su Instagram · @bendrex_officialsite</span></a>
+        <p class="article-social__note">Anteprime, build e date: gli aggiornamenti passano anche da lì.</p>
+      </aside>
+    </section>
+
+    <section class="section container" aria-labelledby="related-heading">
+      <h2 class="section-title" id="related-heading">Articoli correlati</h2>
+      <ul class="related-list">
+        <li><a href="build-pc.html">Build PC gaming: tre build pronte per 1080p, 1440p e 4K</a></li>
+        <li><a href="articolo-ryzen-7-9800x3d.html">Ryzen 7 9800X3D: perché nei giochi conta la cache 3D</a></li>
+        <li><a href="articolo-rtx-5070.html">RTX 5070: 12 GB per il 1440p, la scheda della build Media</a></li>
+        <li><a href="articolo-ssd-kingston-nv3.html">Kingston NV3 1 TB: l'SSD che mettiamo nella build Economy</a></li>
+        <li><a href="blog.html">Blog &amp; Forum: news, guide e discussioni</a></li>
+      </ul>
+    </section>
+  </main>
+
+    <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 BENDREX.IT · Simone Gargivolo · Abruzzo, Italia · <a href="mailto:info@bendrex.it">info@bendrex.it</a></span>
+      <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/cookie.html">Cookie</a> · <a href="/affiliazione.html">Affiliazione</a> · <a href="/come-scegliamo.html">Come scegliamo</a> · <a href="/contatti.html">Contatti</a></span>
+      <span class="footer-social"><a class="social-link" href="https://www.instagram.com/bendrex_officialsite/" target="_blank" rel="noopener noreferrer" aria-label="Instagram ufficiale di Bendrex, si apre in una nuova scheda"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></span>
+      <span>In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
