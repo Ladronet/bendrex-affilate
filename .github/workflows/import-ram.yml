@@ -1,0 +1,29 @@
+name: import-ram
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: import-ram
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Scarica e applica
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/ram.tar.gz "https://files.catbox.moe/4woswv.gz"
+          tar -tzf /tmp/ram.tar.gz
+          tar -xzf /tmp/ram.tar.gz -C .
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git config user.name "Cyber-Architect"
+          git config user.email "cyber-architect@bendrex.it"
+          git add -A
+          git commit -m "RAM per giocare: nuova guida hardware e 8 link in entrata" -m "Co-authored-by: OpenBot <335604065+openbotgit[bot]@users.noreply.github.com>"
+          git push origin HEAD:main
