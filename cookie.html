@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="bendrex.it non usa cookie, localStorage né analytics: nessun banner e nessun consenso. Cosa succede quando clicchi un link di affiliazione." />
+  <meta name="description" content="Un solo strumento di statistica senza cookie, dichiarato con nome e durata: nessun banner, e come disattivarlo in un minuto." />
   <title>Cookie e strumenti di tracciamento | BENDREX.IT</title>
   <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
   <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
@@ -17,16 +17,21 @@
   <meta property="og:site_name" content="Bendrex" />
   <meta property="og:locale" content="it_IT" />
   <meta property="og:title" content="Cookie e strumenti di tracciamento | BENDREX.IT" />
-  <meta property="og:description" content="bendrex.it non usa cookie, localStorage né analytics: nessun banner e nessun consenso." />
+  <meta property="og:description" content="Un solo strumento di statistica senza cookie, dichiarato con nome e durata: nessun banner, e come disattivarlo in un minuto." />
   <meta property="og:url" content="https://bendrex.it/cookie.html" />
   <meta property="og:image" content="https://bendrex.it/img/og-bendrex.jpg" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cookie e strumenti di tracciamento | BENDREX.IT" />
-  <meta name="twitter:description" content="bendrex.it non usa cookie, localStorage né analytics: nessun banner e nessun consenso." />
+  <meta name="twitter:description" content="Un solo strumento di statistica senza cookie, dichiarato con nome e durata: nessun banner, e come disattivarlo in un minuto." />
   <meta name="twitter:image" content="https://bendrex.it/img/og-bendrex.jpg" />
+  <style>
+    /* I comandi da console sono lunghi: a 360 px vanno a capo invece di allargare la pagina. */
+    .legal-page code { overflow-wrap: anywhere; }
+  </style>
   <script>document.documentElement.classList.add("js");</script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="583e2353-94b2-45ab-9a37-2785ddf033b6" data-domains="bendrex.it" data-do-not-track="true"></script>
 </head>
 <body class="legal-page">
   <a class="skip-link" href="#main">Salta al contenuto</a>
@@ -49,17 +54,17 @@
     <section class="hero container">
       <p class="back-link" aria-label="Percorso"><a href="/">Home</a> › <span aria-current="page">Cookie</span></p>
       <h1>Cookie e strumenti di tracciamento</h1>
-      <p class="lead">Questo sito non usa cookie. Non usa nemmeno altri sistemi che scrivono qualcosa sul tuo dispositivo. Ecco cosa significa in pratica e perché non trovi un banner.</p>
+      <p class="lead">Questo sito non usa cookie. Usa una sola memoria locale, per contare le visite in forma aggregata e senza cookie: la trovi elencata qui sotto, con nome, fornitore e durata. Per questo non trovi un banner.</p>
     </section>
 
     <section class="section container">
       <h2 class="section-title">In breve</h2>
       <ul class="spec-list">
         <li><span class="spec-key">Cookie</span><span class="spec-val">nessuno, né tecnici né di profilazione, né di prima né di terza parte</span></li>
-        <li><span class="spec-key">Memoria locale</span><span class="spec-val">nessun uso di <code>localStorage</code> o <code>sessionStorage</code></span></li>
-        <li><span class="spec-key">Statistiche</span><span class="spec-val">nessuno strumento di analytics, nemmeno senza cookie</span></li>
-        <li><span class="spec-key">Script esterni</span><span class="spec-val">nessuno: l'unico codice eseguito è quello del sito, servito da questo dominio</span></li>
-        <li><span class="spec-key">Banner</span><span class="spec-val">non necessario, perché non c'è nulla da autorizzare</span></li>
+        <li><span class="spec-key">Memoria locale</span><span class="spec-val">una sola voce, <code>umami-cache</code>, per non contare due volte la stessa visita</span></li>
+        <li><span class="spec-key">Statistiche</span><span class="spec-val">Umami Cloud, senza cookie, senza profilazione e senza tracciamento tra siti</span></li>
+        <li><span class="spec-key">Script esterni</span><span class="spec-val">uno: lo script di Umami Cloud, servito da <code>cloud.umami.is</code>; tutto il resto è codice del sito</span></li>
+        <li><span class="spec-key">Banner</span><span class="spec-val">non necessario: le statistiche senza cookie rientrano nell'eccezione prevista per le statistiche aggregate</span></li>
         <li><span class="spec-key">Forum e commenti</span><span class="spec-val">la sezione Blog/Forum è un modello statico: non ci sono registrazioni, non si possono inviare commenti, quindi non esistono cookie di sessione o di login</span></li>
       </ul>
       <p>Alla data dell'ultima revisione, indicata in fondo a questa pagina, la verifica è stata fatta sul sito pubblicato, non solo sul codice sorgente, e ha dato questo risultato.</p>
@@ -68,6 +73,7 @@
     <section class="section container">
       <h2 class="section-title">Perché non c'è un banner</h2>
       <p>La regola italiana (art. 122 del D.Lgs. 196/2003, così come interpretato dalle Linee guida cookie e altri strumenti di tracciamento del Garante privacy del 10 giugno 2021) richiede il consenso dell'utente solo per i cookie e gli strumenti che <em>non</em> sono tecnici: profilazione, pubblicità, statistiche, tracciamento tra siti.</p>
+      <p>Le statistiche di questo sito rispettano queste condizioni: sono aggregate, riguardano solo bendrex.it, non conservano il tuo indirizzo IP nei dati di visita, non vengono incrociate con altre fonti e il fornitore le tratta solo per nostro conto. Per questo non richiedono consenso e non c'è un banner da cliccare.</p>
       <p>Un banner mostrato quando non esistono cookie da autorizzare non è una cautela in più: è una richiesta di consenso senza oggetto. Per questo il sito non lo mostra, e questa pagina esiste proprio per dirlo in modo esplicito.</p>
       <p>Se un giorno il sito userà uno strumento che richiede consenso, il banner comparirà <strong>prima</strong> che quello strumento venga attivato, e questa pagina sarà aggiornata nello stesso momento.</p>
     </section>
@@ -76,6 +82,11 @@
       <h2 class="section-title">Cosa non è un cookie</h2>
       <p>Il fornitore che ospita il sito registra i cosiddetti log tecnici: indirizzo IP, data e ora, pagina richiesta, browser. Servono a erogare le pagine e a difendersi da attacchi e abusi. <strong>Non sono cookie</strong>, non finiscono sul tuo dispositivo e non vengono usati per profilare o per fare statistiche sulle visite.</p>
       <p>Il trattamento è descritto nella <a href="privacy.html">informativa privacy</a>, con la base giuridica e i tempi di conservazione.</p>
+    </section>
+
+    <section class="section container">
+      <h2 class="section-title">Statistiche di visita</h2>
+      <p>Per capire quali pagine vengono lette usiamo Umami Cloud, un servizio di statistica senza cookie. Registra la pagina vista, da dove arrivi, la lingua e il tipo di dispositivo, e calcola un identificatore di sessione pseudonimo a partire da indirizzo IP, browser e una chiave che cambia ogni mese. L'indirizzo IP non viene conservato nei dati di visita e nulla viene incrociato con altri siti o altre fonti. I dati sono conservati nell'Unione europea per 6 mesi e il fornitore, Umami Software, Inc., li tratta solo per nostro conto.</p>
     </section>
 
     <section class="section container">
@@ -101,35 +112,40 @@
     </section>
 
     <section class="section container">
+      <h2 class="section-title">Memoria locale</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Nome</th><th>Fornitore</th><th>Finalità</th><th>Durata</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><code>umami-cache</code></td><td>Umami Software, Inc.</td><td>tiene insieme i dati di una stessa visita, per non contarla due volte</td><td>fino a quando il fornitore la invalida o tu cancelli i dati del browser</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="section container">
       <h2 class="section-title">Come verificarlo da solo</h2>
       <p>Non devi fidarti di questa pagina: puoi controllare in trenta secondi.</p>
       <ul class="spec-list">
-        <li><span class="spec-key">Strumenti sviluppatore</span><span class="spec-val">apri gli strumenti del browser (tasto F12 o menu), vai alla scheda <em>Application</em> (Chrome/Edge) o <em>Archiviazione</em> (Firefox), apri <em>Cookie</em> e <em>Local Storage</em>: sotto questo dominio non troverai voci</span></li>
-        <li><span class="spec-key">Rete</span><span class="spec-val">nella scheda <em>Network</em>, dopo un aggiornamento della pagina, nessuna richiesta va a domini di analytics o pubblicità</span></li>
-        <li><span class="spec-key">Modalità privata</span><span class="spec-val">il sito funziona allo stesso modo in navigazione privata, perché non conserva preferenze</span></li>
+        <li><span class="spec-key">Strumenti sviluppatore</span><span class="spec-val">apri gli strumenti del browser (tasto F12 o menu) e vai alla scheda <em>Application</em> (Chrome/Edge) o <em>Archiviazione</em> (Firefox): nei Cookie non trovi nulla, in <em>Local Storage</em> una sola voce, <code>umami-cache</code></span></li>
+        <li><span class="spec-key">Rete</span><span class="spec-val">dopo un aggiornamento della pagina, l'unica richiesta verso l'esterno è quella delle statistiche, verso <code>cloud.umami.is</code></span></li>
+        <li><span class="spec-key">Modalità privata</span><span class="spec-val">il sito funziona allo stesso modo; le statistiche contano la visita senza collegarla alle successive</span></li>
       </ul>
     </section>
 
     <section class="section container">
-      <h2 class="section-title">Se in futuro aggiungessimo strumenti di misurazione</h2>
-      <p>Può succedere, per esempio per capire quali pagine sono lette. In quel caso le regole cambiano e il sito si adeguerebbe così:</p>
-      <ul class="spec-list">
-        <li><span class="spec-key">Prima di attivare</span><span class="spec-val">lo strumento non parte finché l'utente non ha scelto</span></li>
-        <li><span class="spec-key">Due scelte pari</span><span class="spec-val">«Accetta» e «Rifiuta» con la stessa evidenza: stessa dimensione, stesso colore, stessa posizione</span></li>
-        <li><span class="spec-key">Nessuna preselezione</span><span class="spec-val">nessuna casella già spuntata, nessun consenso implicito</span></li>
-        <li><span class="spec-key">Rifiuto facile</span><span class="spec-val">rifiutare costa un click come accettare; chiudere il banner non vale come consenso; lo scorrimento della pagina non vale come consenso</span></li>
-        <li><span class="spec-key">Nessun muro</span><span class="spec-val">il sito resta accessibile anche a chi rifiuta</span></li>
-        <li><span class="spec-key">Per categorie</span><span class="spec-val">consenso separato per analitici, profilazione e terze parti, con l'informativa raggiungibile dal banner</span></li>
-        <li><span class="spec-key">Revoca</span><span class="spec-val">un link «Preferenze cookie» sempre presente nel footer, per cambiare idea quando vuoi</span></li>
-        <li><span class="spec-key">Prova della scelta</span><span class="spec-val">la scelta viene registrata, e questo richiede un cookie tecnico o una memoria locale: sarebbero dichiarati qui, perché anche gli strumenti tecnici vanno elencati</span></li>
-      </ul>
-      <p>Lo stesso vale per gli strumenti che non usano cookie ma identificano il dispositivo: <code>localStorage</code>, <code>sessionStorage</code>, identificatori del browser, pixel. Non sono cookie, ma se servono a riconoscerti nel tempo richiedono consenso e informativa esattamente come i cookie.</p>
+      <h2 class="section-title">Come disattivare le statistiche</h2>
+      <p>Non c'è un banner perché non c'è un consenso da dare, ma puoi escluderti. Apri la console del browser (F12), scheda Console, e digita:</p>
+      <p><code>localStorage.setItem('umami.disabled', 1)</code></p>
+      <p>Da quel momento le tue visite su questo sito non vengono più contate, finché non cancelli i dati del browser. Se preferisci, attiva l'opzione «Non tracciare» (Do Not Track) del browser: questo sito la rispetta.</p>
     </section>
 
     <section class="section container">
       <h2 class="section-title">Modifiche</h2>
       <p>Questa pagina viene aggiornata insieme al sito. Se aggiungiamo o rimuoviamo strumenti, la modifica è riportata qui e la data di revisione cambia.</p>
-      <p><strong>Ultima revisione:</strong> 9 novembre 2026</p>
+      <p><strong>Ultima revisione:</strong> 26 novembre 2026</p>
 </section>
 
     <section class="section container">
