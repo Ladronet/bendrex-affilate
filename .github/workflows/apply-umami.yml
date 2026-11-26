@@ -16,12 +16,13 @@ jobs:
       - name: Applica la patch revisionata
         run: |
           set -euo pipefail
-          curl -fsSL --retry 3 -o /tmp/umami.patch "https://files.catbox.moe/g2euel.patch"
+          curl -fsSL --retry 3 -o /tmp/umami-patch.tar.gz "https://litter.catbox.moe/kdzoan.gz"
+          tar -xzf /tmp/umami-patch.tar.gz -C /tmp
           echo "e92449c4ec662eff9cfff8fa612f2ae0229fe802b5b3ce2dc2eafd2f0a414835  /tmp/umami.patch" | sha256sum -c -
           git apply --check /tmp/umami.patch
           git apply /tmp/umami.patch
           git diff --stat | tail -3
-      - name: Commit e push
+      - name: Commit e pusj
         run: |
           set -euo pipefail
           git config user.name "Cyber-Architect"
