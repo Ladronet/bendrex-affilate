@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Il numero sul cartellino è la potenza in uscita, non quella assorbita: picchi delle GPU, transienti ATX 3.1 ed efficienza spiegano perché non basta." />
+  <title>Alimentatore PC: quanti watt servono davvero</title>
+  <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48" />
+  <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta name="theme-color" content="#07080C" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="canonical" href="https://bendrex.it/articolo-alimentatore-quanti-watt.html">
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Bendrex" />
+  <meta property="og:locale" content="it_IT" />
+  <meta property="og:title" content="Alimentatore PC: quanti watt servono davvero" />
+  <meta property="og:description" content="Il numero sul cartellino è la potenza in uscita, non quella assorbita: picchi delle GPU, transienti ATX 3.1 ed efficienza spiegano perché non basta." />
+  <meta property="og:url" content="https://bendrex.it/articolo-alimentatore-quanti-watt.html" />
+  <meta property="og:image" content="https://bendrex.it/img/articolo-alimentatore-quanti-watt-og-1200x630.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alimentatore PC: quanti watt servono davvero" />
+  <meta name="twitter:description" content="Il numero sul cartellino è la potenza in uscita, non quella assorbita: picchi delle GPU, transienti ATX 3.1 ed efficienza spiegano perché non basta." />
+  <meta name="twitter:image" content="https://bendrex.it/img/articolo-alimentatore-quanti-watt-og-1200x630.jpg" />
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Bendrex",
+      "url": "https://bendrex.it/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://bendrex.it/icon-512.png",
+        "width": 512,
+        "height": 512
+      },
+      "sameAs": [
+        "https://www.instagram.com/bendrex_officialsite/"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "name": "Bendrex",
+      "url": "https://bendrex.it/",
+      "inLanguage": "it-IT"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://bendrex.it/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Build PC",
+          "item": "https://bendrex.it/build-pc.html"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Alimentatore",
+          "item": "https://bendrex.it/articolo-alimentatore-quanti-watt.html"
+        }
+      ]
+    },
+    {
+      "@type": "Article",
+      "headline": "Perché i watt dichiarati non bastano a dire se l'alimentatore regge",
+      "description": "Il numero sul cartellino è la potenza in uscita, non quella assorbita: picchi delle GPU, transienti ATX 3.1 ed efficienza spiegano perché non basta.",
+      "image": [
+        "https://bendrex.it/img/articolo-alimentatore-quanti-watt-og-1200x630.jpg"
+      ],
+      "datePublished": "2026-11-27T00:00:00+01:00",
+      "dateModified": "2026-11-27T00:00:00+01:00",
+      "author": {
+        "@type": "Organization",
+        "name": "Redazione BENDREX"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Redazione BENDREX",
+        "url": "https://bendrex.it/"
+      },
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://bendrex.it/articolo-alimentatore-quanti-watt.html"
+      },
+      "inLanguage": "it-IT"
+    }
+  ]
+}
+  </script>
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="583e2353-94b2-45ab-9a37-2785ddf033b6" data-domains="bendrex.it" data-do-not-track="true"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Salta al contenuto</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Principale">
+      <a class="brand" href="/">BENDREX<span class="dot">.IT</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Apri menu">☰</button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/">Home</a></li>
+        <li><a href="build-pc.html">Build PC</a></li>
+        <li><a href="blog.html" aria-current="page">Blog/Forum</a></li>
+        <li><a href="cup-of-game.html">Cup of Game</a></li>
+        <li><a href="eventi.html">Eventi Live</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero container">
+      <p class="back-link" aria-label="Percorso"><a href="/">Home</a> › <a href="build-pc.html">Build PC</a> › <span aria-current="page">Alimentatore</span></p>
+      <span class="eyebrow">Blog · Hardware</span>
+      <h1>Perché i watt dichiarati non bastano a dire se l'alimentatore regge</h1>
+      <picture>
+        <source srcset="img/articolo-alimentatore-quanti-watt-600x900.webp" type="image/webp" />
+        <img class="hero-keyart" src="img/articolo-alimentatore-quanti-watt-600x900.png" alt="Copertina Bendrex «Quanto assorbe»: il numero «543 W» con la scritta «dalla presa», sotto «500 W alla scheda · Gold 92%» e le righe «Platinum 94% → 532 W» e «Titanium 95% → 526 W»; in basso «Calcolo su soglie 80 PLUS 50% di carico» e bendrex.it." width="600" height="900" fetchpriority="high" decoding="async" />
+      </picture>
+    </section>
+
+    <section class="section container article" aria-label="Articolo">
+      <p class="spec-muted"><time datetime="2026-11-27">27 novembre 2026</time> · Redazione BENDREX</p>
+
+      <div class="notice">
+        <p><strong>In breve</strong></p>
+        <ul>
+          <li><strong>Il wattaggio è potenza in uscita</strong>, non assorbita: dalla presa si preleva di più, e il rapporto è l'efficienza.</li>
+          <li><strong>Il carico non è piatto</strong>: i picchi misurati delle GPU stanno il 20-30% sopra la media (ComputerBase, 27 maggio 2025), e il wattaggio va scelto su quelli.</li>
+          <li><strong>Le tabelle dei produttori bastano</strong>: 550 W per una 5060, 850 W per una 5080, 1.000 W per una 5090.</li>
+        </ul>
+      </div>
+
+      <p>Quanti watt serve l'alimentatore di un PC? Il numero sul cartellino non risponde. «850 W» non è quello che l'alimentatore prende dalla presa. È quello che può dare alle componenti, e solo restando lì. Le schede video moderne non chiedono potenza in modo costante. Per un attimo possono chiedere molto più della media, e la specifica ATX 3.1 chiede all'alimentatore di reggere il colpo. Un alimentatore da 850 W conforme ad ATX 3.1 deve saper erogare 1.700 W per 100 microsecondi (Intel ATX 3.1, tabella 3-3, novembre 2023). NVIDIA indica 850 W per una RTX 5080 da 360 W (pagina prodotto, letta il 27 novembre 2026). Quel margine serve ai picchi, che ComputerBase misura dal 20 al 30% sopra la media (27 maggio 2025). Chi cerca «alimentatore pc quanti watt» trova tabelle di numeri. Qui c'è come leggerle.</p>
+
+      <h2>Cosa significa «850 W» (e cosa non dice)</h2>
+      <p>Un alimentatore prende la corrente dalla presa e la consegna alle componenti in corrente continua. Il numero sul cartellino è quello che riesce a consegnare, non quello che consuma. Quello che consuma è sempre più alto, perché una parte si perde come calore. Il conto è semplice: potenza erogata divisa per efficienza. Sono due numeri diversi, e quasi tutte le discussioni sui wattaggi nascono dal confonderli.</p>
+      <p>Della potenza erogata, la parte che conta per giocare è quella sul 12 V. È lì che si collegano processore e scheda video. Le altre tensioni servono a poco. Oltre al totale, quindi, vale la pena guardare quanta corrente l'alimentatore dichiara sul 12 V.</p>
+      <p>Poi c'è il motivo per cui il numero da solo non basta: il carico non è piatto. In un PC il consumo non è mai fermo. Una scheda video passa da poco a tanto in pochi millisecondi. Un alimentatore scelto sulla media si trova al limite proprio nei momenti peggiori.</p>
+      <p>La specifica ATX 3.1 (Intel, novembre 2023) serve a questo. Chiede agli alimentatori di reggere escursioni molto sopra il dichiarato, per tempi brevissimi. Il caso peggiore è il 200% della potenza dichiarata per 100 microsecondi. Su un 850 W significa 1.700 W.</p>
+      <p>«ATX 3.1» è la formula che si trova su quasi tutte le scatole. Rispetto alla 3.0 cambia il connettore per le schede video, che diventa il 12V-2x6. Aggiorna anche i requisiti di tenuta. I picchi, però, erano già nella 3.0. Un cavo solo porta al massimo 600 W. Per questo una 5080 chiede un cavo da 450 W o più, e una 5090 lo usa quasi tutto.</p>
+
+      <h2>I picchi delle GPU: il dato che il wattaggio non copre</h2>
+      <p>La potenza media di una scheda video non è il suo momento peggiore. ComputerBase misura la potenza della sola scheda a 1.000 campioni al secondo (metodo dichiarato, 27 maggio 2025). La misura è in 4K, sulla media di cinque giochi. La RTX 5080 sta a 307 W di media e arriva a 399 W di picco. La 5090 passa da 520 a 683 W, contro 575 W dichiarati. Il picco sta il 20-30% sopra la media, e sulla 5090 supera anche il dato di targa.</p>
+      <p>Per questo i produttori dimensionano sul picco, non sulla media. NVIDIA dichiara per ogni scheda un alimentatore consigliato. Il conto parte da un PC con Ryzen 9 9950X. Il risultato è 550 W per la 5060, 650 W per la 5070, 750 W per la 5070 Ti, 850 W per la 5080 e 1.000 W per la 5090.</p>
+      <p>Le pagine di 5080, 5070 Ti e 5090 sono state ricontrollate il 27 novembre 2026. Il dato della 5070 è quello del dossier del 24 novembre. Quel giorno la pagina italiana non rispondeva.</p>
+      <p>La regola pratica è semplice. Prendi il picco della scheda video. Aggiungi il processore e un centinaio di watt per il resto. Lascia un margine del 20-30%. Le tabelle dei produttori fanno già questo conto. Se la scheda dice 750 W, un 750 W ATX 3.1 di buona qualità basta: non serve salire a 1.000 W per stare tranquilli. L'unica eccezione è la 5090, dove il cavo lavora vicino al limite. ComputerBase misura 576 W medi e picchi a 675 W sul connettore (27 maggio 2025).</p>
+
+      <h2>Efficienza: quanto vale in bolletta e quando smette di convenire</h2>
+      <p>Essere «ATX 3.1» non vuol dire essere efficiente. La specifica chiede appena il 70% a pieno carico. L'efficienza la certifica 80 PLUS, ed è quello che significa la scritta «Gold» sulla scatola. Dice quanta parte della corrente prelevata arriva davvero alle componenti. Nella classe italiana, i 230 V, un Gold sta al 90% a basso carico. Sale al 92% a metà carico e scende all'89% a pieno carico (80 PLUS, pagina dei livelli, consultata il 24 novembre 2026). Non dice che l'alimentatore è ben fatto: dice solo quanto è efficiente.</p>
+      <p>Quanto vale in soldi? A 500 W erogati, un Gold al 92% preleva 543 W dalla presa. Un Platinum al 94% ne preleva 532, un Titanium al 95% ne preleva 526. Fra Gold e Titanium ci sono 17 W, circa 31 kWh l'anno a cinque ore al giorno. Non è niente, e non è il motivo per pagare il doppio. Il Gold è il punto in cui la spesa in più smette di ripagarsi. È un giudizio pratico, non un dato misurato.</p>
+      <p>C'è un effetto che vale più dei kWh: la curva. Facciamo un esempio, non una misura di un PC vero. Se il PC eroga 400 W, un 650 W lavora al 62% e un 850 W al 47%. Entrambi sono nella zona buona, dove un Gold rende il 92%. Prendere un alimentatore più grosso «per stare largo» non fa risparmiare: sposta il punto di lavoro. E un alimentatore più potente non consuma di più di per sé. Il consumo segue il carico, e a parità di carico conta l'efficienza di quel modello.</p>
+      <p>Tre cose non le scrivo come dati, perché non le ho verificate. Quanto spesso si sia fuso un vecchio connettore 12VHPWR: i casi esistono, ma non sono una statistica. I numeri dei calcolatori di potenza online: nessuno documenta il metodo. L'effetto dell'età dei condensatori: argomento reale, senza misure datate.</p>
+
+      <div class="notice">
+        <p><strong>Scelte consigliate</strong></p>
+        <p>In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei.</p>
+        <p><em>Prezzi indicativi, stima di mercato, non un'offerta Amazon: i prezzi possono variare.</em></p>
+        <p>Due tagli coprono i due casi dell'articolo. Entrambi sono ATX 3.1 con cavo 12V-2x6 nativo e un'efficienza Gold; sulla scheda Amazon la certificazione indicata è <strong>Cybenetics Gold</strong>, non 80 PLUS.</p>
+        <ul>
+          <li><strong>CORSAIR RM750e (2025), 750 W</strong> — il taglio per una build fino alla 5070 Ti. Alla verifica stava intorno ai 75 €, con uno sconto dichiarato da Amazon. <a href="https://www.amazon.it/dp/B0DMTMK2Q5?tag=bendrex01-21" target="_blank" rel="sponsored nofollow noopener">CORSAIR RM750e 750 W su Amazon</a></li>
+          <li><strong>CORSAIR RM850e (2025), 850 W</strong> — il taglio dell'esempio con la 5080: 850 W sono esattamente quelli che NVIDIA chiede per quella scheda. Alla verifica stava intorno agli 83 €. <a href="https://www.amazon.it/dp/B0DMTN5WLB?tag=bendrex01-21" target="_blank" rel="sponsored nofollow noopener">CORSAIR RM850e 850 W su Amazon</a></li>
+        </ul>
+        <p>Nessuno dei due è un consiglio assoluto. Se la scheda video chiede 650 W, il 750 W è già sopra il necessario; il 1.000 W ha senso solo con una 5090 o una CPU molto assetata.</p>
+      </div>
+
+      <h2 class="section-title">Domande frequenti</h2>
+      <ul class="faq-list">
+        <li><strong>Quanti watt serve un alimentatore per una RTX 5080?</strong><p>850 W, secondo NVIDIA, con un PC basato su Ryzen 9 9950X (pagina prodotto, letta il 27 novembre 2026). La scheda ha 360 W dichiarati e 399 W di picco misurato. Serve un cavo da 450 W o tre connettori da 8 pin.</p></li>
+        <li><strong>Un alimentatore più potente consuma di più?</strong><p>No. Il consumo segue il carico del PC, non la targa dell'alimentatore. Quello che si preleva dalla presa è la potenza erogata divisa per l'efficienza, e l'efficienza è quella del singolo modello. A parità di carico contano le sue soglie, non i watt dichiarati.</p></li>
+        <li><strong>ATX 3.1 è meglio di ATX 3.0?</strong><p>Dipende da cosa guardi. La 3.1 cambia il connettore delle schede video, che diventa il 12V-2x6, e aggiorna la tenuta. I requisiti sui picchi li aveva già introdotti la 3.0. Nessuna delle due garantisce l'efficienza.</p></li>
+        <li><strong>«80 PLUS Gold» significa che l'alimentatore è di qualità?</strong><p>No, significa che supera le soglie di efficienza della classe: nel 230 V, 90% a basso carico, 92% a metà, 89% a pieno carico. Non dice niente su protezioni, condensatori, ripple o rumore.</p></li>
+      </ul>
+
+      <div class="notice">
+        <p>Dati rilevati il 24 novembre 2026, con le verifiche del 27 novembre 2026 indicate accanto a ogni voce. Intel ATX 3.1: rev. 2.1a, novembre 2023 (documento 336521). ComputerBase: 27 maggio 2025. Pagine NVIDIA: consultate il 27 novembre 2026, salvo la 5070.</p>
+      </div>
+
+      <p class="spec-muted"><strong>Fonti</strong></p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th scope="col">Fonte</th><th scope="col">Cosa fornisce</th><th scope="col">Data</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Intel, <em>ATX 3.1 Design Guide</em>, rev. 2.1a (doc. 336521)</td><td>escursioni 200% a 100 µs (tab. 3-3); 12V-2x6 da 600 W (tab. 3-5); efficienza minima 70% (tab. 4-14)</td><td>novembre 2023</td></tr>
+            <tr><td>nvidia.com — pagine prodotto RTX 5060, 5070 Ti, 5080, 5090; nota 5 «basato su Ryzen 9 9950X»</td><td>wattaggio consigliato per scheda</td><td>consultate 27/11/2026 (5070: dossier 24/11/2026)</td></tr>
+            <tr><td>computerbase.de — <em>Grafikkarten 2025: Neue Messwerte zur Leistungsaufnahme</em></td><td>media e picchi misurati: 5080 307/399 W, 5090 520/683 W; 576/675 W sul connettore della 5090</td><td>27/05/2025</td></tr>
+            <tr><td>80 PLUS (CLEAResult)</td><td>soglie 230 V EU per Gold/Platinum/Titanium</td><td>consultata 24/11/2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="article-social" aria-label="Seguici su Instagram">
+        <a class="social-link" href="https://www.instagram.com/bendrex_officialsite/" target="_blank" rel="noopener noreferrer" aria-label="Instagram ufficiale di Bendrex, si apre in una nuova scheda"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg><span>Seguici su Instagram · @bendrex_officialsite</span></a>
+        <p class="article-social__note">Anteprime, build e date: gli aggiornamenti passano anche da lì.</p>
+      </aside>
+    </section>
+
+    <section class="section container" aria-labelledby="related-heading">
+      <h2 class="section-title" id="related-heading">Articoli correlati</h2>
+      <ul class="related-list">
+        <li><a href="build-pc.html">Build PC gaming: tre build pronte per 1080p, 1440p e 4K</a></li>
+        <li><a href="articolo-rtx-5070.html">RTX 5070: 12 GB per il 1440p, la scheda della build Media</a></li>
+        <li><a href="articolo-scheda-madre.html">Scheda madre: cosa conta davvero e cosa si può ignorare</a></li>
+        <li><a href="articolo-vram-8-gb.html">8 GB di VRAM: quando bastano e quando no</a></li>
+        <li><a href="articolo-quanta-ram-serve-per-giocare.html">RAM per giocare: quanta ne serve, e quando 16 GB non bastano</a></li>
+        <li><a href="blog.html">Blog &amp; Forum: news, guide e discussioni</a></li>
+      </ul>
+    </section>
+  </main>
+
+    <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 BENDREX.IT · Simone Gargivolo · Abruzzo, Italia · <a href="mailto:info@bendrex.it">info@bendrex.it</a></span>
+      <span class="footer-legal"><a href="/privacy.html">Privacy</a> · <a href="/cookie.html">Cookie</a> · <a href="/affiliazione.html">Affiliazione</a> · <a href="/come-scegliamo.html">Come scegliamo</a> · <a href="/contatti.html">Contatti</a></span>
+      <span class="footer-social"><a class="social-link" href="https://www.instagram.com/bendrex_officialsite/" target="_blank" rel="noopener noreferrer" aria-label="Instagram ufficiale di Bendrex, si apre in una nuova scheda"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>Instagram</a></span>
+      <span>In qualità di Affiliato Amazon io ricevo un guadagno dagli acquisti idonei. Alcuni link a G2A sono link di affiliazione: se acquisti tramite questi link posso ricevere una commissione, senza costi aggiuntivi per te.</span>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
