@@ -1,0 +1,32 @@
+name: apply-cup
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: apply-cup
+  cancel-in-progress: false
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Applica la patch
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/cup.tar.gz "https://n.uguu.se/xCgaOTFYyUVu.tar.gz"
+          tar -xzf /tmp/cup.tar.gz -C /tmp
+          echo "b4c522e5cf5f7d3ca6120da6df26d86a17b4f7557b184b6971930bd6264e2915  /tmp/cup.patch" | sha256sum -c -
+          git apply --check /tmp/cup.patch
+          git apply /tmp/cup.patch
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git config user.name "Cyber-Architect"
+          git config user.email "cyber-architect@bendrex.it"
+          git rm -q .github/workflows/apply-cup.yml
+          git add -A
+          git commit -m "Cup of the Week del 28 novembre: Monster Hunter Wilds, Space Marine 2 e PEAK" -m "Co-authored-by: OpenBot <335604065+openbotgit[bot]@users.noreply.github.com>"
+          git push origin HEAD:main
