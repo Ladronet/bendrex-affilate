@@ -1,0 +1,32 @@
+name: apply-cup2
+on:
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: apply-cup2
+  cancel-in-progress: false
+jobs:
+  apply:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Applica la patch
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 -o /tmp/cup2.tar.gz "https://d.uguu.se/eebLyQcYxeRX.tar.gz"
+          tar -xzf /tmp/cup2.tar.gz -C /tmp
+          echo "fec4a88aa7db5f2272b781c1bf2a0373e88a510cdaf23becc0fa33a5c18440e8  /tmp/cup2.patch" | sha256sum -c -
+          git apply --check /tmp/cup2.patch
+          git apply /tmp/cup2.patch
+      - name: Commit
+        run: |
+          set -euo pipefail
+          git config user.name "Cyber-Architect"
+          git config user.email "cyber-architect@bendrex.it"
+          git rm -q .github/workflows/apply-cup2.yml
+          git add -A
+          git commit -m "Cup: sesto correlato a Castlevania, lastmod aggiornato" -m "Co-authored-by: OpenBot <335604065+openbotgit[bot]@users.noreply.github.com>"
+          git push origin HEAD:main
